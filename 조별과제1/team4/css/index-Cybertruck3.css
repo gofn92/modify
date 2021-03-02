@@ -1,0 +1,678 @@
+
+/* ------------------ reset ---------------------- */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+html, body{
+    background: rgba(0,0,0,1);
+    height: 100%;
+}
+
+#con{
+    position: relative;
+    height: 100%;
+}
+
+.blind{
+    width: 0px; height: 0px;
+    position: absolute;
+    overflow: hidden;
+    text-indent: -99999999999999999px;
+    font-size: 0px; line-height: 0px;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* --------------------- header ------------------------- */
+.header{
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+    position: fixed; top: 0px; left: 0px; right: 0px;
+    z-index: 99999999999999999;
+}
+.nav{
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    place-items: center center;
+    padding: 10px 0px;
+}
+.header .nav ul > li{
+    display: inline-block;
+}
+.header .nav ul li > a{
+    color: white;
+}
+.button{
+    border-radius: 50%;
+    background: rgba(0,0,0,0);
+    border: none;
+    font-size: 3vh;
+    padding: 0px;
+    width: 300px;
+}
+.button a{
+    text-decoration: none;
+    color: #fff;
+}
+.button a{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 1s;
+}
+.button a::after{
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 1s;
+}
+.button:hover a{
+    padding-right: 25px;
+    color: wheat;
+}
+.button:hover a::after{
+    opacity: 1;
+    right: 0;
+}
+
+/* ---------------------- 햄버거버튼 ------------------------ */
+.header .nav .menubtn{
+    display: grid;
+    place-items: center center;
+}
+.header .main-menu{
+    display: none;
+}
+input[id="menuicon"]{
+    display: none;
+}
+.menubtn{
+    display: block;
+    width: 60px; height: 60px;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    cursor:pointer;
+}
+.menubtn span{
+    display: block;
+    position: absolute;
+    width: 80%; height: 5px;
+    border-radius: 30px;
+    background:white;
+    transition: all .5s;
+    z-index: 2;
+}
+
+.menubtn span:nth-child(1){
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.menubtn span:nth-child(2){
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.menubtn span:nth-child(3){
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.side .side-menu{
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    /* border: 1px solid #eee; */
+    z-index: -9;
+    transition: all 1s;
+}
+.side .side-menu .area_desc p{
+    margin-bottom: 50px;
+}
+.side .side-menu .area_desc{
+    font-size: 1.7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.side .side-menu .area_desc p:hover{
+    animation: col 0.7s alternate infinite;
+}
+@keyframes col{
+    from{
+        color: white;
+    }
+    to{
+        color: burlywood;
+    }
+}
+.side .side-menu button{
+    background-color: rgba(0,0,0,0);
+    color: white;
+    width: 45%;
+    height: 45%;
+}
+/* --------------------------햄버거 변화 ------------------------ */
+input[id="menuicon"]:checked ~ .header .menubtn{
+    z-index: 99999999;
+}
+input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(1){
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(40deg);
+    background: white;
+}
+input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(2){
+    left: 50%;
+    transform: translate(-50%,-50%); scale: 2; opacity: 0;
+    background: white;
+}
+input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(3){
+    bottom: 46%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(-40deg);
+    background: white;
+}
+input[id="menuicon"]:checked ~ .header .side .side-menu{
+    right: 0;
+}
+/* -------------------side nav ------------------------------- */
+.hover-box{
+    width: auto; height: 400px;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.3);
+}
+.hover-box:hover a{
+    padding-left: 20px;
+}
+.hover-box:hover p{
+    width: 200px;
+    display: inline-block;
+} 
+.hover-box a{
+    height: 100px; line-height: 100px;
+    text-decoration: none;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    display: block;
+    font-size: 25px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 1s;
+}
+.hover-box a p{
+    display: none;
+    width: 0px;
+    padding-left: 20px;
+    transition: all 1s;
+}
+.hover-box a p:hover{
+    animation: col 0.7s alternate infinite;
+}
+@keyframes col{
+    from{
+        color: white;
+    }
+    to{
+        color: burlywood;
+    }
+}
+/* ------------------ section ----------------------- */
+section{
+    width: 100%;
+}
+.main{
+    height: 160px;
+}
+/* ------------------- article --------------------- */
+article{
+    width: 100%;
+    margin:0 auto;
+    box-sizing: border-box;
+}
+article .text{
+    color: white;
+    font-size: 2vh;
+    padding-top: 120px;
+}
+.a1{
+    background: url(../image/image-cybertruck/Cybertruck.gif) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+.a1 img{
+        display: block;
+}
+.a1 button{
+    margin-bottom: 50px;
+}
+.a2{
+    width: 90%;
+    background: url(../image/image-cybertruck/performance_video_desktop.gif) no-repeat;
+    background-size: 100% 96%;
+    text-align: center;
+}
+.a3{
+    width: 90%;
+    background: url(../image/image-cybertruck/Interior.gif) no-repeat;
+    background-size: 100% 96%;
+    text-align: center;
+}
+.a4{
+    width: 80%;
+    text-align: center;
+}
+.a2 .text{
+    padding: 110px 5%;
+}
+.a3 .text{
+    padding: 110px 5%;
+}
+.a4 .text{
+    padding: 0px;
+}
+.a5{
+    width: 80%;
+    text-align: center;
+}
+.a5 .text{
+    padding-top: 0px; 
+}
+/* -------------------------- article5 ------------------------------ */
+.article5{
+    width: 100%; 
+    margin: 0px auto;
+}
+.article5 ul{
+    font-size: 0;
+}
+.article5 ul > li{
+    display: inline-block;
+    vertical-align: middle;
+    width: 24.5%;
+}
+.article5 ul > li > a{
+    display: block;
+    width: auto;
+    text-decoration: none;
+    margin: 5px;
+}
+.article5 ul > li > a .screen{
+    position: relative;
+    overflow: hidden;
+    z-index: -999;
+}
+.article5 ul > li > a .screen .top{
+    position: absolute;
+    bottom: 150%;
+    left: 5%;
+    z-index: 2;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.5rem;
+    font-weight: 900;
+    transition: all 1s;
+}
+.article5 ul > li > a .screen .bottom{
+    position: absolute;
+    top: 150%;
+    left: 5%;
+    z-index: 2;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.5rem;
+    font-weight: 900;
+    transition: all 1s;
+}
+.article5 ul > li > a .screen img{
+    width: 100%;
+}
+.article5 ul > li > a:hover .top{
+    bottom: 52%;
+}
+.article5 ul > li > a:hover .bottom{
+    top: 52%;
+}
+.article5 ul > li > a .screen::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.35s;
+}
+.article5 ul > li > a:hover .screen::after{
+    opacity: 1;
+}
+/* -------------------- footer ------------------ */
+.footer{
+    width: 100%; height: auto;
+    background: black;
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    border-top: 1px solid white;
+}
+.footer p{
+    margin-bottom: 10px;
+}
+.footer address{
+    margin-bottom: 10px;
+}
+.footer div{
+    margin-bottom: 10px;
+}
+/* ------------------------------ slide ----------------------- */
+.slidesection input[id*="slide"]{
+    display: none;
+}
+.slidesection .slidewrap{
+    max-width: 1200px;
+    margin: 65px auto;
+    overflow: hidden;
+}
+.slidesection .slidelist{
+    white-space: nowrap;
+    font-size: 0px;
+}
+.slidesection .slidelist > li{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    transition: all 1s;
+}
+.slidesection .slidelist > li > a{
+    display: block;
+    position: relative;
+}
+.slidesection .slidelist > li > a img{
+    width: 100%;
+} 
+.slidesection .slidelist label{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 50px;
+    cursor: pointer;
+    z-index: 11;
+}
+.slidesection .slidelist .left{
+    left: 30px;
+    background: url(../image/image-cybertruck/left.png) center center / 100% no-repeat;
+}
+.slidesection .slidelist .right{
+    right: 30px;
+    background: url(../image/image-cybertruck/right.png) center center / 100% no-repeat;
+}
+/* -------------------------slide 효과 ----------------------- */
+.slidesection [id="slide1"]:checked ~ .slidewrap .slidelist > li{
+    transform: translateX(0%);
+}
+.slidesection [id="slide2"]:checked ~ .slidewrap .slidelist > li{
+    transform: translateX(-100%);
+}
+.slidesection [id="slide3"]:checked ~ .slidewrap .slidelist > li{
+    transform: translateX(-200%);
+}
+.slidesection [id="slide4"]:checked ~ .slidewrap .slidelist > li{
+    transform: translateX(-300%);
+}
+/* ------------------------------------------------ */
+@media screen and (min-width:1200px){
+    .a1 img{
+        margin:0 auto;
+    }
+    article{
+        height: 1024px;
+    }
+    article .button1{
+        margin-top: 700px;
+    }
+    article .button2{
+        margin-top: 300px;
+    }
+    article .button3{
+        margin-top: 300px;
+    }
+    article .button4{
+        margin-top: 20px;
+    }
+    article .button5{
+        margin-top: 50px;
+    }
+    .header .nav .brand{
+        margin-top: -10px;
+    }
+    .non{
+        display: none;
+    }
+    .footer{
+        bottom: -10%;
+    }
+    .a4{
+        padding-top: 25px;
+    }
+    .a5{
+        padding-top: 0px;
+    }
+    .article5 ul{
+        margin-left: 3%
+    }
+}
+@media screen and (min-width:501px) and (max-width:1199px){
+    .a1 img{
+        margin:0 auto;
+    }
+    article{
+        height: 1024px;
+    }
+    article .button1{
+        margin-top: 700px;
+    }
+    article .button2{
+        margin-top: 230px;
+    }
+    article .button3{
+        margin-top: 230px;
+    }
+    article .button4{
+        margin-top: 100px;
+    }
+    article .button5{
+        margin-top: 100px;
+    }
+    .header .nav .logo{
+        margin-left: 35%
+    }
+    .header .nav .brand{
+        margin-top: -10px;
+    }
+    .article5 ul li{
+        display: block;
+        margin:0 auto;
+        width: 50%;
+    }
+    .side .side-menu{
+        position: fixed;
+        top: 0;
+        right: -50%;
+        width: 50%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        z-index: -9;
+        transition: all 1s;
+    }
+    .leftside{
+        display: none;
+    }
+    .footer{
+        bottom: -60%;
+    }
+    .a4{
+        padding-top: 90px;
+    }
+    .a5{
+        padding-top: 40px;
+    }
+}
+@media screen and (max-width:500px){
+    /*header .brand img{
+        height: 130px;
+    }*/
+    section{
+        margin:0 auto;
+    }
+    .a2 .text{
+        display: none;
+    }
+    .a3 .text{
+        display: none;
+    }
+    .a2:hover > .text{
+        display: block;
+    }
+    .a3:hover > .text{
+        display: block;
+    }
+    .a2 button{
+        display: none;
+    }
+    .a3 button{
+        display: none;
+    }
+    .a2:hover > button{
+        display: block;
+    }
+    .a3:hover > button{
+        display: block;
+    }
+    .a1 img{
+        margin:0 auto;
+        width: 300px;
+        padding-top: 35px;
+    }
+    article{
+        height: 640px;
+    }
+    article .button1{
+        margin:0 auto;
+        margin-top: 430px;
+    }
+    article .button2{
+        margin:0 auto;
+        margin-top: 30px;
+    }
+    article .button3{
+        margin:0 auto;
+        margin-top: 30px;
+    }
+    article .button4{
+        margin:0 auto;
+        margin-top: 78px;
+    }
+    article .button5{
+        margin:0 auto;
+        margin-top: 100px;
+    }
+    .header .nav .logo{
+        display: none;
+    }
+    .header .nav .brand{
+        margin:0 auto;
+        margin-top: -10px;
+    }
+    .side .side-menu .area_desc{
+        padding-top: 100px;
+    }
+    .side .side-menu .area_desc p{
+        margin-bottom: 25px;
+    }
+    .menubtn span:nth-child(1){
+        top: -60%;
+        left: 80%;
+    }
+    .menubtn span:nth-child(2){
+        top: -38%;
+        left: 80%;
+    }
+    .menubtn span:nth-child(3){
+        top: -25%;
+        left: 80%;
+    }
+    input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(1){
+        top: -40%;
+        left: 80%;
+    }
+    input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(2){
+        left: 50%;
+    }
+    input[id="menuicon"]:checked ~ .header .menubtn span:nth-child(3){
+        top: -40%;
+        left: 80%;
+    }
+    .article5 ul li{
+        display: block;
+        margin:0 auto;
+        width: 100%;
+    }
+    .side .side-menu{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        z-index: -9;
+        transition: all 1s;
+    }
+    .leftside{
+        display: none;
+    }
+    .footer{
+        margin-top: 550px;
+        bottom: -10%;
+    }
+    .a4{
+        padding-top: 100px;
+    }
+    .a5{
+        padding-top: 50px;
+    }
+    .slidesection .slidelist .left{
+        left: -25px;
+        background: url(../image/image-cybertruck/left.png) center center / 50% no-repeat;
+    }
+    .slidesection .slidelist .right{
+        right: -25px;
+        background: url(../image/image-cybertruck/right.png) center center / 50% no-repeat;
+    }
+}

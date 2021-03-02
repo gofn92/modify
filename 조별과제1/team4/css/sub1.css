@@ -1,0 +1,251 @@
+@charset "utf-8";
+*{
+    margin: 0 auto;
+    color: white
+    }
+body{
+    background-color: black;
+}
+.container {    
+    bottom: 25vw;
+    position: relative;    
+    width: 700vw;  
+    height: 10vw;  
+}
+.inner {   
+    position: relative;  
+    width: 100vw;
+    float: left;
+    height: 70%;
+    bottom: 10%;
+}
+.inner img{         
+    position: relative;              
+    width: 75%;
+    left: 14.2%;
+    bottom: 30%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.back{
+    position: relative;  
+    width: 500vw;
+    height: 40vw; 
+}
+.snow{    
+    width: 100.1vw;
+}
+.home{  
+    width: 99.1vw;
+}
+.high{  
+    width: 100vw;
+}
+.nor{   
+    width: 99.1vw;
+}
+.button{
+    margin-left: 2%;   
+    margin-top: -25%;
+    position:absolute;   
+}
+.button .bt1,.bt2,.bt3,.bt4,.bt5,.bt6,.bt7{
+    width: 4vw;
+}
+.bt8,.bt9,.bt10,.bt11{
+    border: 1px solid black;
+    width: 5vw;
+}
+.op h2{
+    font-size: 2vw;
+    color: black;
+}
+.footer{
+    clear: both;
+}
+.banner{
+    animation: banner 1.5s;
+}
+.banner h1{
+    color: orangered;
+}
+.banner1{
+    animation: banner1 1.5s;
+}
+.bannerpic{
+    height: 100vh;
+}
+@keyframes banner1 {
+0%{ 
+    opacity: 0;
+    transform: translateX(-100%);                   
+    }
+25%{
+    opacity: 0.2;
+    transform: translateX(-75%)
+}
+50%{
+    opacity: 0.5;
+    transform: translateX(-50%)
+}
+75%{
+    opacity: 0;
+    transform: translateX(-25%)
+    
+}               
+100%{
+    opacity: 1;
+    transform: translateX(0%)}
+
+}@keyframes banner {
+    0%{
+        opacity: 0;
+        transform: translateX(-100%);}
+    
+    100%{
+        opacity: 1;
+        transform: translateX(0%);}
+}
+.rocon{
+    
+    width: 80%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+.rotate{
+    width: 50%;             
+}
+.mainimg{
+    width: 100%;
+    display: flex;
+}
+.mainimg .img1{
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+    position: relative;
+    left:10%;
+
+}
+.mainimg .img2{
+    width: 100%;
+    clip-path: polygon(23% 0, 100% 0%, 75% 100%, 0% 100%);
+    
+}
+.mainimg .img3{
+    width: 100%;
+    position: relative;
+    right: 10%;
+    clip-path: polygon(23% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+.mainimg1{
+width: 100%;
+display: flex;
+}
+.mainimg1 .img1{
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+    position: relative;
+    left:10%;
+
+}
+.mainimg1 .img2{
+    width: 100%;
+    clip-path: polygon(23% 0, 100% 0%, 75% 100%, 0% 100%);
+    
+}
+.mainimg1 .img3{
+    width: 100%;
+    position: relative;
+    right: 10%;
+    clip-path: polygon(23% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+.img4{
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0%, 40% 100%, 0% 100%);
+}
+.img5{
+    width: 100%;
+    height: auto;
+    clip-path: polygon(47% 0, 100% 0%, 100% 100%, 0 100%);
+}
+strong{
+    color: rgb(252, 94, 36);
+    font-size: 4vw;
+}
+.art{
+    line-height: 20px;
+    font-size: 1vh;
+    width: 80%;
+    padding: 10%;
+}
+#scratch{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+@media screen and (min-width:375px) and (max-width:1199px){
+.img5{
+    width: 70%;
+    margin-right: 15%;       
+}
+.img4{
+    width: 70%;
+    margin-left: 15%;
+}       
+.mainimg{
+    display: flex;
+    flex-wrap: wrap;
+}
+.blink{
+    display: none;
+}
+.containerbox{
+    width: 100%;
+    height: 100%;
+}
+.mainimg1{
+    width: 100%;
+    display: flex;
+}
+
+}
+@media screen and (max-width:374px){
+.mainimg{
+    flex-wrap: wrap;
+}
+footer{
+    opacity: 1;
+    
+}.hide5{
+    height: 500px;
+}
+.hide5.show{
+    display:block;
+}
+.header .nav .logo{
+    display: none;
+}
+.nav{
+    height: 50px;
+}
+.side .side-menu{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    /* border: 1px solid #eee; */
+    z-index: -9;
+    transition: all 1s;
+}
+.mobile{
+    display: block;
+}
+.blink{
+    display: none;
+}  
+
+}  

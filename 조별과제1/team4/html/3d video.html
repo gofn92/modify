@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible">
+        
+		<title>3d video</title>
+		<style>
+            
+            *{margin: 0 auto;
+              padding: 0;
+              box-sizing: border-box;
+            color: white;}
+        section{
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+        
+        section .box{
+            animation: rotate 10s infinite linear;
+            position: absolute;
+            top:calc(50% - 0px);            
+            left:calc(50% - 700px);          
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+        }
+        section .box div{
+            position: absolute;
+            top: 0;       
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform:rotateX(-20deg) rotateY(25deg) translate3d(-5px,-50px,150px) ;
+            
+        }
+        section .box div span img{
+            position: absolute;
+            top: 0;
+            
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(0px);
+        }
+        section .box div span {
+            position: absolute;
+            top:0;
+            
+            width: 100%;
+            height:100%;
+            
+            
+        }
+        section .box div span:nth-child(1){
+            transform: rotatex(0deg) translate3d(0,0,150px);           
+        }
+        section .box div span:nth-child(2) video
+        {
+            transform: rotateY(180deg);
+        }
+        section .box div span:nth-child(2){
+            transform: rotatey(90deg) translate3d(0,0,-150px);
+        }
+        section .box div span:nth-child(3){
+            transform: rotatex(90deg) translate3d(0,0,150px);
+        }
+        section .box div span:nth-child(4){
+            transform: rotatex(0deg) translate3d(0,0,-150px);
+        }
+        section .box div span:nth-child(5) video
+        {
+            transform: rotateY(180deg);
+        }
+        section .box div span:nth-child(5){
+            transform: rotatey(90deg) translate3d(0,0,150px);
+        }
+        section .box div span:nth-child(6){
+            transform: rotatex(90deg) translate3d(0,0,-150px);
+        }
+       /* @keyframes rotate 
+        {
+            0%
+            {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+            
+            100%
+            {
+                transform: perspective(1000px) rotateY(720deg);
+                
+            }
+        }*/
+        
+        .box{
+            cursor: pointer;
+            transition: .9s;
+        }
+        
+       .box:active
+       {
+           transition: .9s;         
+           transform:perspective(2000px) translate3d(0px,0px,500px)rotateY(150deg);
+
+       }
+       .benesis{
+        
+           transition: .9s;
+           
+       }
+       .box:active .benesis{
+        
+           transition: .9s;
+           transform-style: preserve-3d;
+            transform:rotateX(0deg) rotateY(180deg) translate3d(0,0,100px) scale(2) ;
+           
+       }
+    .copy1{
+        margin-left: 50%;
+    }
+    .copy2{
+        margin-left: 25%;
+    }
+        </style>
+        
+
+	</head>
+    <body style="background-color: #000;">
+        
+
+        <section>
+                     
+            <div class="box">
+                <div>
+                    <span><img src="../image/choiimage/av_main3.jpg.jpg"></span>
+                    <span><img src="../image/choiimage/lamboactive.jpg"></span>
+                    <span><img src="../image/choiimage/lamboactive.jpg"></span>                  
+                    <span><img src="../image/choiimage/lamboactive.jpg"></span>
+                    <span><img src="../image/choiimage/lamboactive.jpg"></span>
+                    <span><img src="../image/choiimage/lamboactive.jpg"></span>
+                </div>
+                <div class="benesis" style="position: relative;font-size: 3vw;font-weight: bolder;">AVENTADOR</div>
+                
+            </div>
+            <div class="box copy1">
+                <div>
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>                  
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>
+                    <span><img src="../image/choiimage/hur/hur_violet.jpg"></span>
+                </div>
+                <div class="benesis" style="position: relative;font-size: 3vw;">HURACAN</div>
+                
+            </div>
+            <div class="box copy2">
+                <div>
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>                  
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>
+                    <span><img src="../image/choiimage/ura/urus_yellow2.webp"></span>
+                </div>
+                <div class="benesis" style="position: relative;font-size: 5vw;"><strong>URUS</strong></div>
+                
+            </div>
+            
+        </section>
+	</body>
+</html>

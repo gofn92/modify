@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENESIS</title>
+    <link rel="stylesheet" href="../css/index-Cybertruck3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript">
+
+    jQuery(document).on("ready", function() {
+        jQuery(".box").each(function () {
+            
+            // 개별적으로 Wheel 이벤트 적용
+            jQuery(this).on("mousewheel DOMMouseScroll", function(event) {
+
+                var delta = 0;
+                var moveTop = null;
+                var boxMax = jQuery(".box").length-1;
+
+                var winEvent = "";
+
+                  
+                if(!winEvent) {
+                    winEvent = window.event;
+                }
+
+                if(winEvent.wheelDelta) {
+
+                    delta = winEvent.wheelDelta / 120;
+                    if(window.opera) {
+                        delta = -delta;
+                    }
+                }
+
+               
+                else if(winEvent.detail) {
+                    delta = -winEvent.detail / 3;
+                }
+                
+                // 마우스휠을 위에서 아래로 이동
+                if(delta < 0) {
+
+                    // 마지막 BOX 보다 순서값이 작은 경우에 실행
+                    if(jQuery(this).index() < boxMax) {
+                        
+                        console.log("▼");
+                        if(jQuery(this).next() != undefined) {
+                            moveTop = jQuery(this).next().offset().top;
+                        }
+                        
+                    }
+                    else if(jQuery(elmSelecter).next() == undefined){
+                            moveTop = jQuery(".footer").offset().top;// 
+                        }
+                }
+
+                // 마우스휠을 아래에서 위로 이동
+                else {
+
+                    // 첫번째 BOX 보다 순서값이 큰 경우에 실행
+                    if(jQuery(this).index() > 0) {
+
+                        console.log("▲");
+                        if(jQuery(this).prev() != undefined) {
+                            moveTop = jQuery(this).prev().offset().top;
+                        }
+                    }
+                }
+
+                // 화면 이동 0.1초(100)
+                jQuery("html,body").stop().animate({
+                    scrollTop : moveTop + "px"
+                }
+                , {
+                    duration: 300, complete : function () { }
+                });
+            });
+        });
+   
+        document.querySelector("#gksrmf").onclick=function(){
+            document.querySelector("#t1").innerHTML="<div><h2>퍼포먼스 및 효율성</h2><p>완벽하게 전기로 설계되어 기존에 볼 수 없었던 강력한 파워, 스피드, 다양한 용도로 사용 가능한 픽업트럭을 만나보세요. 강력한 드라이브트레인과 낮은 무게 중심으로 탁월한 트랙션 컨트롤 및 토크를 제공하여 0~60mph를 2.9초만에 주파하고 최대 주행 거리 500마일을 제공합니다.</p></div>";
+            document.querySelector("#t2").innerHTML="<div><h2>유연한 인테리어와 금고형 적재공간</h2><p>6개의 시트와 2열 시트 하단의 위치한 추가 수납 공간까지 제공합니다. 완전히 새로운 맞춤형 사용자 인터페이스를 갖춘 첨단 17인치 터치스크린으로 인테리어를 완성했습니다.여유롭게 수납 가능한 툴박스, 타이어 및 사이버 쿼드를 위한 전용 공간을 갖추었습니다. 언더베드, 프렁크 및 세일 필러을 포함한 100 입방 피트의 외부 잠금형 적재 공간을 활용할 수 있습니다.</p></div>";
+            document.querySelector("#t3").innerHTML="<div><h2>엑소스켈레톤</h2><p>Cybertruck은 내구성을 강화하고 탑승자를 보호하기 위해 외벽 형태로 제작되었습니다. 관통이 거의 불가능한 외골격(Exoskeleton) 형태의 차체를 포함하여 30배 초고경도 냉간압연 스테인레스 스틸(Ultra-Hard 30X Cold-Rolled stainless-steel) 구조의 외벽, 아머 글라스 등 모든 부품들이 뛰어난 강도와 내구성을 위해 설계되었습니다.</p></div>";
+            document.querySelector("#t4").innerHTML="<div><h2>뛰어난 적응력</h2><p>Cybertruck은 견고함과 동시에 세련된 디자인을 갖추고 있어 사용자의 요구에 따라 완벽하게 적용 가능합니다. 온보드 파워 및 에어컴프레셔 등을 포함하여 다재다능한 실용적 디자인으로 모든 경험을 선사해드립니다.</p></div>";
+            document.querySelector("#ad1").innerHTML="<address>서울 성동구 왕십리로 303</address>";
+            document.querySelector("#s1").innerHTML="[벤네시스사이버트럭]<br>시대를 앞서가는 벤네시스의 자신작!";
+            document.querySelector("#s2").innerHTML="-압도적인 퍼포먼스와 비쥬얼<br>-미래지향형 친환경 전기차";
+            document.querySelector("#s3").innerHTML="맥스 스피드 350 km/h 세상에서 제일 빠른 베네시스의 오너가 되고싶다면";
+            document.querySelector("#s4").innerHTML="이곳을 클릭해주세요";
+            document.querySelector("#s5").innerHTML="매력적인 뒷모습의 주인이 되어주세요!";
+            document.querySelector("#s6").innerHTML="당신을 기다리고 있습니다";
+        }
+        document.querySelector("#English").onclick=function(){
+            document.querySelector("#t1").innerHTML="<div><h2>Performance and Efficiency</h2><p>Meet a pickup truck that is completely electrically designed and can be used for a variety of purposes, including powerful power, speed, and power. Powerful drivetrain and excellent traction control and torque with a low weight center, delivering 0 to 60 mph in 2.9 seconds and a maximum mileage of 500 miles.</p></div>";
+            document.querySelector("#t2").innerHTML="<div><h2>Flexible interior and safe loadspace</h2><p>Provides additional storage space located at the bottom of 6 seats and 2nd row seats. Complete the interior with a state-of-the-art 17-inch touchscreen with a completely new custom user interface.Dedicated space for toolboxes, tires, and cyberquadds that are easy to store. 100 cubic feet of external lockable loadspace including underbed, frunk and sale filler is available.</p></div>";
+            document.querySelector("#t3").innerHTML="<div><h2>Exoskeleton</h2><p>Cybertruck is built in the form of an outer wall to enhance durability and protect occupants. All parts of the 30x ultra-hard cold-rolled stainless steel structure, including exoskeleton-like bodyshells with almost impenetrable perforation, are designed for superior strength and durability.</p></div>";
+            document.querySelector("#t4").innerHTML="<div><h2>Excellent adaptability</h2><p>Cybertruck is rugged and stylish, making it perfect for your needs. All hands-on practical designs, including on-board power and air compressor, offer you all the experience.</p></div>";
+            document.querySelector("#ad1").innerHTML="<address>303, Wangsimni-ro, Seongdong-gu, Seoul</address>";
+            document.querySelector("#s1").innerHTML="[BENESIS Cybertruck]<br>BENESIS's own work ahead of the times!";
+            document.querySelector("#s2").innerHTML="-overwhelming performance and visuals, Future oriented eco friendly electric vehicle";
+            document.querySelector("#s3").innerHTML="Max Speed 350 km/h If you want to be the owner of the world's fastest BENESIS,";
+            document.querySelector("#s4").innerHTML="Please click here";
+            document.querySelector("#s5").innerHTML="Be the owner of the charming back!";
+            document.querySelector("#s6").innerHTML="I'm waiting for you";
+        }
+         });
+</script>
+</head>
+<body>
+    <div id="con">
+        <input type="checkbox" id="menuicon">
+        <header class="header">
+            <div class="nav">
+                <div class="logo">
+                    <a href="../html/index.html"><img src="../image/image-cybertruck/KakaoTalk_20201119_161339011.gif" alt="mark-2"  height="100"></a>
+                </div>
+                <div class="brand"><img src="../image/image-cybertruck/KakaoTalk_20201123_091022445.gif" alt="brand" height="130px">
+                </div>
+                <label for="menuicon" class="menubtn">
+                    <span class="blind">3</span>
+                    <span class="blind">1</span>
+                    <span class="blind">2</span>
+                </label>
+                <div class="side">
+                    <div class="side-menu">
+                        <span class="area_desc">
+                            <p><a href="#main4">Model</a></p>
+                            <p><a href="#main5">customize</a></p>
+                            <p class="non"><a href="#main1">performance</a></p>
+                            <p class="non"><a href="#main2">Interior</a></p>
+                            <p class="non"><a href="#main3">Technology</a></p>
+                            <p><a href="#">test-play</a></p>
+                            <p><a href="#">contact</a></p>
+                            <button id="gksrmf">한글</button><br>
+                            <button id="English">English</button>
+                        </span>
+                    </div>
+                </div>   
+            </div>     
+        </header>
+        <div class="leftside">
+            <div class="hover-box">
+                <a href="#main1"><i class="fas fa-circle"></i><p>performance</p></a>
+                <a href="#main2"><i class="fas fa-circle"></i><p>Interior</p></a>
+                <a href="#main3"><i class="fas fa-circle"></i><p>Technology</p></a>
+                <a href="#main4"><i class="fas fa-circle"></i><p>Model</p></a>
+            </div>
+        </div>
+        <section>
+            <article class="box a1">
+                <button id="bt1" class="button button1">
+                    <a href="#">Buy Now!</a>
+                </button>
+                <img src="../image/image-cybertruck/text.JPG" alt="txt">
+            </article>
+            <article id="main1" class="box a2">
+                <div id="t1" class="text">
+                    <h2>퍼포먼스 및 효율성</h2>
+                    <p>완벽하게 전기로 설계되어 기존에 볼 수 없었던 강력한 파워, 스피드, 다양한 용도로 사용 가능한 픽업트럭을 만나보세요. 강력한 드라이브트레인과 낮은 무게 중심으로 탁월한 트랙션 컨트롤 및 토크를 제공하여 0~60mph를 2.9초만에 주파하고 최대 주행 거리 500마일을 제공합니다.</p>
+                </div>
+                <button class="button button2">
+                    <a href="#">Buy Now!</a>
+                </button>
+            </article>
+            <article id="main2"class="box a3">
+                <div id="t2" class="text">
+                    <h2>유연한 인테리어와 금고형 적재공간</h2>
+                    <p>6개의 시트와 2열 시트 하단의 위치한 추가 수납 공간까지 제공합니다. 완전히 새로운 맞춤형 사용자 인터페이스를 갖춘 첨단 17인치 터치스크린으로 인테리어를 완성했습니다.여유롭게 수납 가능한 툴박스, 타이어 및 사이버 쿼드를 위한 전용 공간을 갖추었습니다. 언더베드, 프렁크 및 세일 필러을 포함한 100 입방 피트의 외부 잠금형 적재 공간을 활용할 수 있습니다.</p>
+                </div>
+                <button class="button button3">
+                    <a href="#">Buy Now!</a>
+                </button>
+            </article>
+            <article id="main3" class="box a4">
+                <img src="../image/image-cybertruck/03_Desktop.jpg" alt="txt" width="100%">
+                <div id="t3" class="text">
+                    <h2>엑소스켈레톤</h2>
+                    <p>Cybertruck은 내구성을 강화하고 탑승자를 보호하기 위해 외벽 형태로 제작되었습니다. 관통이 거의 불가능한 외골격(Exoskeleton) 형태의 차체를 포함하여 30배 초고경도 냉간압연 스테인레스 스틸(Ultra-Hard 30X Cold-Rolled stainless-steel) 구조의 외벽, 아머 글라스 등 모든 부품들이 뛰어난 강도와 내구성을 위해 설계되었습니다.</p>
+                </div>
+                <button class="button button4">
+                    <a href="#">Buy Now!</a>
+                </button>
+            </article>
+            <article id="main5" class="box a5">
+                <div data-scroll=".fromLeftIn .fromLeftOut">
+                    <div class="slidesection">
+                        <input type="radio" name="slide" id="slide1" checked>
+                        <input type="radio" name="slide" id="slide2">
+                        <input type="radio" name="slide" id="slide3">
+                        <input type="radio" name="slide" id="slide4">
+                        <div class="slidewrap">
+                            <ul class="slidelist">
+                                <li>
+                                    <a>
+                                        <label for="slide4" class="left"></label>
+                                        <img src="../image/image-cybertruck/NY-Cab-Cybertruck-LeaseFetcher.jpg" alt="pic1">
+                                        <label for="slide2" class="right"></label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <label for="slide1" class="left"></label>
+                                        <img src="../image/image-cybertruck/Royal-Mail-Cybertruck-LeaseFetcher.jpg" alt="pic2">
+                                        <label for="slide3" class="right"></label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <label for="slide2" class="left"></label>
+                                        <img src="../image/image-cybertruck/tesla-cybertruck.jpg" alt="pic3">
+                                        <label for="slide4" class="right"></label>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <label for="slide3" class="left"></label>
+                                        <img src="../image/image-cybertruck/check-the-tesla-cybertruck-working-even-before-it-is-for-sale-in-these-renderings.jpg" alt="pic4">
+                                        <label for="slide1" class="right"></label>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="t4" class="text">
+                        <h2>뛰어난 적응력</h2>
+                        <p>Cybertruck은 견고함과 동시에 세련된 디자인을 갖추고 있어 사용자의 요구에 따라 완벽하게 적용 가능합니다. 온보드 파워 및 에어컴프레셔 등을 포함하여 다재다능한 실용적 디자인으로 모든 경험을 선사해드립니다.</p>
+                    </div>
+                    <button class="button button5">
+                        <a href="#">Buy Now!</a>
+                    </button>
+                </div>
+            </article>
+            <article class="box article5">
+            <div id="main4" class="main"></div>
+                <div class="screen-box">
+                  <ul>
+                      <li>
+                          <a href="../html/index-Cybertruck3.html">
+                            <div class="screen">
+                                  <div id="s1" class="top">
+                                      [벤네시스사이버트럭]
+                                      시대를 앞서가는 벤네시스의 자신작!
+                                    </div>
+                                  <div id="s2" class="bottom">
+                                      -압도적인 퍼포먼스와 비쥬얼
+                                      -미래지향형 친환경 전기차
+                                  </div>
+                                <div>  
+                                  <img src="../image/image-cybertruck/shot-info.jpg" alt="info">
+                                </div>
+                            </div>
+                          </a>
+                      </li>
+                      <li>
+                        <a href="../html/index-benesis i8.html">
+                            <div class="screen">
+                                <div class="top">
+                                    CONFIGURATOR
+                                    CREATE YOUR
+                                </div>
+                                <div class="bottom">
+                                    benesis i8
+                                </div>
+                                <div>
+                                <img src="../image/image-cybertruck/bmw3.jpg" alt="info">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/indexchoi.html">
+                            <div class="screen">
+                                <div id="s3" class="top">
+                                    맥스 스피드 350 km/h 세상에서 제일 빠른베네시스의 오너가 되고싶다면
+                                </div>
+                                <div id="s4" class="bottom">  
+                                    이곳을 클릭해주세요
+                                </div>
+                                <div>
+                                <img src="../image/image-cybertruck/spider.gif" alt="info">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/turn.html">
+                            <div class="screen">
+                                <div id="s5" class="top">
+                                    매력적인 뒷모습의 주인이 되어주세요!
+                                </div>
+                                <div id="s6" class="bottom">
+                                    당신을 기다리고 있습니다
+                                </div>
+                                <div>
+                                <img src="../image/image-cybertruck/porsche-turbo.jpg" alt="info">
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                  </ul>
+                </div>
+            </article>  
+        </section>
+        <footer class="box footer">
+            <div class="f-logo">
+                <a href="#"><img src="../image/image-cybertruck/KakaoTalk_20201119_161339011.gif" alt="mark-2"  height="100"></a>
+            </div>
+            <p>
+                @Copyright 2020 Benesis Motor Company
+            </p>
+            <div class="link">
+                <a href="https://ko-kr.facebook.com/" target="_blank" ><img src="../image/image-cybertruck/facebook.JPG" alt="facebook" title="facebook"></a>
+                <a href="https://mobile.twitter.com/login" target="_blank"><img src="../image/image-cybertruck/twitter.JPG" alt="twitter" title="twitter"></a>
+                <a href="https://www.youtube.com/user/zilioner83" target="_blank"><img src="../image/image-cybertruck/youtube.JPG" alt="youtube" title="youtube"></a>
+            </div>
+            <address id="ad1">서울 성동구 왕십리로 303</address>
+            <p>080-123-4567</p>
+        </footer>
+    </div>
+</body>
+</html>
