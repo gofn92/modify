@@ -35,8 +35,6 @@
             height: 100%; 
             font-size: 100%;
             scroll-behavior: smooth;
-            /* background-image: url(image/핑크.png); 핑크색배경임 */
-            background: url(image/white.gif);
         }
         #container{
             width: 90%; height: 100%;
@@ -56,7 +54,6 @@
             color: rgba(0,0,0,0.5);
             transition: 0.2s;
             font-weight: bolder;
-            padding: 0 0px;
             font-family: 'Cafe24Dongdong';
         }
         nav a:hover{
@@ -103,7 +100,7 @@
             font-size: 1.1rem;
         }
         #content-exp{
-            width: 100%; height: 200%;
+            width: 100%; height: 170vh;
             display: grid;
             justify-items: center;
             grid-template-columns: repeat(2,1fr);
@@ -140,7 +137,7 @@
             position: relative;
         }
         .product .select-area{
-            background: pink;
+            background: linear-gradient(to right, #ffeeaa 0%, #7ebfeb 100%);
             padding: 10px;
             position: relative;
         }
@@ -171,17 +168,18 @@
         }
         .product .info .count{
             color: red;
+            margin-bottom: 0;
         }
         .total{
             width: 100%;
         }
         .total table{
             width: 100%;
-            border-left: none;
-            border-right: none;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
         }
         .total table .right{
-            text-align: right;
+            text-align: center;
         }
         .total-price{
             margin: 20px 0;
@@ -193,6 +191,14 @@
         .btn-col button{
             padding: 15px;
             margin-bottom: 20px;
+            outline: none;
+        }
+        .btn-col .c-btn1{
+            float: right;
+        }
+        .btn-col .c-btn1::after{
+            content: '';
+            clear: both;
         }
         .npay{
             position: relative;
@@ -203,6 +209,7 @@
         }
         .npay p{
             font-size: 14px;
+            line-height: 2px;
         }
         .npay .npay-btn{
             position: absolute;
@@ -217,7 +224,7 @@
         }
         .npay .npay-btn button:nth-child(2){
             height: 50px;
-            padding: 15px;
+            padding: 19px;
             color: green;
             font-weight: bolder;
         }
@@ -229,10 +236,11 @@
             border-bottom: 3px solid black;
             display: flex;
             justify-content: space-between;
+            padding: 0;
         }
         #item-exp .item-menu a{
             display: inline-block;
-            font-size: 16px;
+            font-size: 30px;
             color: black;
             font-weight: bolder;
             position: relative;
@@ -241,21 +249,24 @@
             display: grid;
             grid-template-rows: repeat(8,1fr);
             justify-content: space-around;
+            margin-bottom: 50px;
+            gap: 50px;
         }
         #item-exp .item-exp-img .item-img1{
-            width: 900px;
+            width: 650px;
         }
         #item-exp .item-exp-img .item-img1 img{
-            width: 900px;
+            width: 650px;
         }
         #item-exp .review{
             width: 100%;
-            padding: 10px;
+            /* padding: 10px; */
+            margin-bottom: 50px;
         }
         #item-exp .review .review-area .re-txt{
             position: relative;
             width: 100%;
-            margin: 0px 25px;
+            /* margin: 0px 25px; */
         }
         #item-exp .review .review-area .re-txt::before,
         #item-exp .review .review-area .re-txt::after{
@@ -265,7 +276,6 @@
         }
         #item-exp .review .review-area .re-txt textarea{
             width: 100%; height: 150px;
-            padding: 0px;
             box-sizing: border-box;
         }
         #item-exp .review .review-area .re-txt .re-btn{
@@ -292,7 +302,7 @@
             border: 1px solid black;
             place-items: center center;
             position: relative;
-            left: 25px;
+            /* left: 25px; */
         }
         #item-exp .review .review-area .re-pho-area .re-rank{
             text-align: center;
@@ -304,7 +314,7 @@
         #item-exp .shipping-policy .shipping-policy-area{
             line-height: 20px;
             position: relative;
-            left: 30px;
+            /* left: 30px; */
         }
         #item-exp .shipping-policy .shipping-policy-area p{
             font-size: 14px;
@@ -314,7 +324,14 @@
         }
         #item-exp .product-qa .row{
             position: relative;
-            left: 50px;
+            /* left: 50px; */
+        }
+        #item-exp .product-qa .row .qa-btn{
+            position: absolute;
+            right: 0;
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
         }
         #item-exp .product-qa .product-qa-area table{
             width: 100%; height: 500px;
@@ -419,22 +436,22 @@
                     <div class="total">
                         <!-- total price area -->
                         <p class="count">수량을 선택해주세요!</p>
-                        <table border="1">
+                        <table>
                             <tr>
-                                <td>DENTAL CLEAN TOOTHPASTE</td>
-                                <td><input type="number" style="width: 40px; height: 22px;" placeholder="1"></td>
-                                <td class="right">14,900원</td>
+                                <td style="text-align: left;">DENTAL CLEAN TOOTHPASTE</td>
+                                <td><input type="number" style="width: 40px; height: 22px; margin-left: 50px;" placeholder="1"></td>
+                                <td class="right" style="text-align: right;">14,900원</td>
                             </tr>
                         </table>
                     </div>
                     <div class="total-price">
-                        <b>총 상품금액</b><span style="font-size: 12px;">(수량):</span><span style="font-size: 20px; font-weight: bolder; color: blue;">14,900원</span><span>(1개)</span>
+                        <b>총 상품금액</b><span style="font-size: 16px;">(수량):</span><span style="font-size: 20px; font-weight: bolder; color: blue;">14,900원</span><span>(1개)</span>
                     </div>
                     <div class="btn-col">
-                        <button style="width: 440px; background: yellow;">이벤트버튼</button>
-                        <button style="width: 140px; background: turquoise;">바로구매</button>
-                        <button style="width: 140px; background: violet;">장바구니</button>
-                        <button style="width: 140px; background: seagreen;">위시리스트</button>
+                        <button style="width: 100%; background: yellow;">이벤트버튼</button>
+                        <button class="c-btn" style="width: 50%; background: turquoise;">바로구매</button>
+                        <button class="c-btn1" style="width: 50%; background: violet;">장바구니</button>
+                        <!-- <button style="width: 31.5%; background: seagreen;">위시리스트</button> -->
                     </div>
                     <div class="npay">
                         <!-- link naverpay -->
@@ -447,7 +464,7 @@
                         </div>
                     </div>
                     <div class="npay-evt">
-                        <a href="https://nid.naver.com/membership/join" target="_blank"><p><span style="font-weight: bolder; color: green;">멤버십</span>첫달 무료가입하고 추가 4%!</p></a>
+                        <a href="https://nid.naver.com/membership/join" target="_blank"><p><span style="font-weight: bolder; color: green; margin-top: 4px;">멤버십</span>첫달 무료가입하고 추가 4%!</p></a>
                     </div>
                 </div>
             </div>
