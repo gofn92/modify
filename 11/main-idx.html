@@ -104,14 +104,27 @@
             top:0px; right: 10px;
         } */
         header a{
+            background-color: rgb(255, 214, 161);
+            font-family: 'Nanum Pen Script';
+            font-weight: normal;
+            font-style: normal;
             transition: all 0.5s;
             padding : 5px;
             color : black;
             line-height: 2;
+            font-weight: 600;
+        }
+        header a:first-child {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        header a:last-child {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
         }
         header a:hover{
             transform: scale(2);
-            background-color: rgb(243, 198, 115);
+            background-color: rgb(255, 166, 0);
             cursor: pointer;
         }
         section{
