@@ -12,116 +12,126 @@
                 font-weight: normal;
                 font-style: normal;
             }
-            @font-face {
-                font-family: 'Cafe24Dongdong';
-                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;
-            }
-        @media (max-width: 1920px){
-            html,body{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                font-size: 100%;
-                /* background-image: url(image/핑크.png); 핑크색배경임  */
-                background: url(image/white.gif);
-            }
-            #container{
-                width: 90%; height: 100%;
-                min-width: 1024px;
-            }
-            nav{
-                display: grid;
-                grid-template-columns: 5% 5% 5% 75% 5% 5%;
-                align-items: center;
-                justify-content: space-around;
-                position: relative;
-                border-bottom: 1px solid black;
-            }
-            nav a{
-                text-decoration: none;
-                color: rgba(0,0,0,0.5);
-                transition: 0.2s;
-                font-weight: bolder;
-                padding: 0 0px;
-                font-family: 'Cafe24Dongdong';
-            }
-            nav a:hover{
-                color: black;
-                font-size: 1.2rem;
-            }
-            nav .nav-btn1{
-                padding: 5px;
-                background: none;
-                border: none;
-                border-radius: 10px;
-                font-family: 'Cafe24Dongdong';
-            }
-            nav .nav-btn2{
-                padding: 5px;
-                background: none;
-                border: none;
-                border-radius: 10px;
-                font-family: 'Cafe24Dongdong';
-            }
-            nav p{
-                font-weight: bolder;
-                font-size: 2rem;
-                text-align: center;
-                font-family: 'SDSamliphopangche_Outline';
-                padding-right: 6%;
-            }
-            .logo-box{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 50px 0 ;
-            }
-            header{
-                border-bottom: 1px solid black;
-                padding: 0 0 10px 0;
-            }
-            header ul{
-                display: flex;
-                justify-content: space-around;
-                list-style: none;
-            }
-            header ul li a{
-                text-decoration: none;
-                color: black;
-                transition: 0.2s;
-                font-family: 'Cafe24Dongdong';
-            }
-            header ul li a:hover{
-                font-weight: bolder;
-                font-size: 1.2rem;
-            }
-            #slide-sec{
-                margin: 50px 0;
-            }
-            #item1 article{
-                width: 100%; height: 100%;
-                display: grid;
-                grid-template-columns: repeat(4,1fr);
-                grid-template-rows: repeat(2,1fr);
-                place-items: center center;
-            }
-            #item1 article .content-item{
-                width: 250px; height: 300px;
-                position: relative;
-                border: 1px solid gray;
-                margin: 30px 0;
-            }
-            #partner{
-                display: grid;
-                place-items: center center;
-                font-size: 3rem;
-            }
-            #partner h2{
-                font-family: 'SDSamliphopangche_Outline';
-            }
+        @font-face {
+            font-family: 'Cafe24Dongdong';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        html,body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 100%;
+            /* background-image: url(image/핑크.png); 핑크색배경임  */
+            /* background: url(image/white.gif); */
+        }
+        #container{
+            width: 90%; height: 100%;
+            min-width: 1024px;
+        }
+        nav{
+            display: grid;
+            grid-template-columns: 5% 5% 5% 75% 5% 5%;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            border-bottom: 1px solid black;
+        }
+        nav a{
+            text-decoration: none;
+            color: rgba(0,0,0,0.5);
+            transition: 0.2s;
+            font-weight: bolder;
+            padding: 0 0px;
+            font-family: 'Cafe24Dongdong';
+        }
+        nav a:hover{
+            color: black;
+            font-size: 1.2rem;
+        }
+        nav .nav-btn1{
+            padding: 5px;
+            background: none;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cafe24Dongdong';
+        }
+        nav .nav-btn2{
+            padding: 5px;
+            background: none;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cafe24Dongdong';
+        }
+        nav p{
+            font-weight: bolder;
+            font-size: 2rem;
+            text-align: center;
+            font-family: 'SDSamliphopangche_Outline';
+            padding-right: 6%;
+        }
+        .logo-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0 ;
+        }
+        header{
+            border-bottom: 1px solid black;
+            padding: 0 0 10px 0;
+        }
+        header ul{
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+        header ul li a{
+            text-decoration: none;
+            color: black;
+            transition: 0.2s;
+            font-family: 'Cafe24Dongdong';
+        }
+        header ul li a:hover{
+            font-weight: bolder;
+            font-size: 1.1rem;
+        }
+        #slide-sec{
+            margin: 50px 0;
+        }
+        #item1 article{
+            width: 100%; height: 100%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(2,1fr);
+            place-items: center center;
+        }
+        #item1 article .content-item{
+            width: 250px; height: 300px;
+            position: relative;
+            border: 1px solid gray;
+            margin: 30px 0;
+        }
+        #item1 .im-ready::before{
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            background: rgba(0,0,0,0.5);
+            width: 250px; height: 300px;
+        }
+
+        #item1 .im-ready p{
+            position: absolute;
+            top: 40%; left: 20%;
+        }
+        #partner{
+            display: grid;
+            place-items: center center;
+            font-size: 3rem;
+        }
+        #partner h2{
+            font-family: 'SDSamliphopangche_Outline';
         }
     </style>
 </head>
@@ -168,28 +178,34 @@
         <section id="item1">
             <article>
                 <div class="content-item">
-                    <a href="shop-dog.html"><img src="image/pp1.png" alt="item1" width="250px" height="300px"></a>
+                    <a href="shop-dog.html"><img src="image/pp3.png" alt="item1" width="250px" height="300px"></a>
                 </div>
-                <div class="content-item">
-                    <img src="image/pp2.png" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
                 </div>
-                <div class="content-item">
-                    <img src="image/pp3.png" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
-                <div class="content-item">
-                    <img src="image/pp4.png" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
-                <div class="content-item">
-                    <img src="image/pp5.jpg" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
-                <div class="content-item">
-                    <img src="image/pp6.jpg" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
-                <div class="content-item">
-                    <img src="image/pp7.jpg" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
-                <div class="content-item">
-                    <img src="image/pp8.jpg" alt="item1" width="250px" height="300px">
+                <div class="content-item im-ready">
+                    <p>상품을 준비중입니다.</p>
+                    
                 </div>
             </article>
             <!-- main content item / add hover effect + behind text-->
@@ -200,9 +216,6 @@
                 <img src="image/part.png" alt="partner">
             </div>
             <!-- partner brand section / click -> go to partner page  -->
-            <footer>
-                <p>footer section</p>
-            </footer>
         </section>
     </div>
 </body>
