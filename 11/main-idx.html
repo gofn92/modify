@@ -18,7 +18,6 @@
             font-weight: normal;
             font-style: normal;
         }
-        @media (max-width: 1920px){
         *{
             margin: 0 auto;
             padding: 0;
@@ -235,7 +234,6 @@
                 line-height: 25px;
             }
 
-
             .front1,
             .front2,
             .front3,
@@ -278,8 +276,30 @@
                 transform-style: preserve-3d;
             }
 
-            .s-box .inner > img:hover {
-                transform: scale(1.3);
+
+            .front .inner{
+                background: url(image/pola.png);
+                background-repeat: no-repeat;
+                width: 300px; height: 400px;
+                display: flex;
+                align-items: flex-start;
+                position: relative;
+                backface-visibility: hidden;
+            }
+            .front .inner img{
+                width: 280px; height: 300px;
+            }
+            .front .inner p{
+                position: absolute;
+                bottom: 0px; left: 50%;
+                transform: translate(-50%,-50%);
+                opacity: 0;
+                transition: 0.5s;
+            }
+            .s-box .front .inner:hover > p{
+                opacity: 1;
+                position: absolute;
+                bottom: 40px;
             }
             .active{
                 transform: rotateY(180deg);
@@ -516,7 +536,6 @@
         .container0{
             display: block;
         }
-    }
     </style>
 </head>
 <body>
@@ -748,11 +767,11 @@
             <h2>강아지 보호 현황</h2>
             <div class="box" id="box">
                     <div class="s-box" id="sBox">
-                        <div class="front1" id="front1">
+                        <div class="front1 front" id="front1">
                             <div class="inner">
                                 <!-- <img src="image/frame2.png" width="200" height="320" style="position: absolute; top: 0%;" alt=""> -->
                                 <img src="image/0.jpg" alt="" width="200" height="320">
-                                
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back1" id="back1">
@@ -768,9 +787,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front2" id="front2">
+                        <div class="front2 front" id="front2">
                             <div class="inner">
                                 <img src="image/poddle.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back2" id="back2">
@@ -788,9 +808,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front3" id="front3">
+                        <div class="front3 front" id="front3">
                             <div class="inner">
                                 <img src="image/1.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back3" id="back3">
@@ -810,9 +831,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front4" id="front4">
+                        <div class="front4 front" id="front4">
                             <div class="inner">
                                 <img src="image/3.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back4" id="back4">
@@ -831,9 +853,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front5" id="front5">
+                        <div class="front5 front" id="front5">
                             <div class="inner">
                                 <img src="image/4.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back5" id="back5">
@@ -850,9 +873,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front6" id="front6">
+                        <div class="front6 front" id="front6">
                             <div class="inner">
                                 <img src="image/6.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back6" id="back6">
@@ -871,9 +895,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front7" id="front7">
+                        <div class="front7 front" id="front7">
                             <div class="inner">
                                 <img src="image/5.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back7" id="back7">
@@ -892,9 +917,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front8" id="front8">
+                        <div class="front8 front" id="front8">
                             <div class="inner">
                                 <img src="image/2.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back8" id="back8" style="height: 350px;">
@@ -917,9 +943,10 @@
             <h2>고양이 보호 현황</h2>
             <div class="box" id="box">
                     <div class="s-box" id="sBox">
-                        <div class="front9" id="front9">
+                        <div class="front9 front" id="front9">
                             <div class="inner">
                                 <img src="image/c1.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back9" id="back9">
@@ -937,9 +964,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front10" id="front10">
+                        <div class="front10 front" id="front10">
                             <div class="inner">
                                 <img src="image/c2.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back10" id="back10">
@@ -957,9 +985,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front11" id="front11">
+                        <div class="front11 front" id="front11">
                             <div class="inner">
                                 <img src="image/c3.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back11" id="back11">
@@ -978,9 +1007,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front12" id="front12">
+                        <div class="front12 front" id="front12">
                             <div class="inner">
                                 <img src="image/c4.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back12" id="back12">
@@ -999,9 +1029,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front13" id="front13">
+                        <div class="front13 front" id="front13">
                             <div class="inner">
                                 <img src="image/c5.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back13" id="back13">
@@ -1021,9 +1052,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front14" id="front14">
+                        <div class="front14 front" id="front14">
                             <div class="inner">
                                 <img src="image/c6.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back14" id="back14">
@@ -1043,9 +1075,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front15" id="front15">
+                        <div class="front15 front" id="front15">
                             <div class="inner">
                                 <img src="image/c7.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back15" id="back15">
@@ -1065,9 +1098,10 @@
                         </div>
                     </div>
                     <div class="s-box" id="sBox">
-                        <div class="front16" id="front16">
+                        <div class="front16 front" id="front16">
                             <div class="inner">
                                 <img src="image/c8.jpg" alt="" width="200" height="320">
+                                <p>살펴보기</p>
                             </div>
                         </div>
                         <div class="back16" id="back16">
