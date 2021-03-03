@@ -21,14 +21,34 @@
     top: 0;
   }
   .bg {
-    height: 80vh; /*코르크이미지**/
+    height: 70vh; /*코르크이미지**/
+    background-image: url(/image/Bgle.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-  .dot {
-    position: absolute; /*로고싸고있는 박스*/
-    left: 10%;
-    top: -3%;
+  .mask {
+    color:white;
+    position: absolute;
+    background: conic-gradient(
+      from 1200deg,
+      #ff9600,
+      rgba(255, 255, 255, 0.247)
+    );
     width: 20%;
-    height: 20%;
+    height: 40%;
+    bottom: 12.5%;
+    left: 84vh;
+    animation: bottotop 1s linear;
+  }
+  @keyframes bottotop {
+    0% {
+      display: none;
+      height: 0%;
+    }
+    100% {
+      display: block;
+      height: 40%;
+    }
   }
   .logo1 {
     position: absolute;
@@ -85,9 +105,9 @@
   .ap {
     position: absolute; /*압정*/
     top: 49vh;
-
   }
   .slider {
+    display: none;
     overflow: hidden;
     background-color: black; /*슬라이더 싸고있는 박스*/
     position: absolute;
@@ -99,6 +119,19 @@
     text-align: center;
     font-family: "SDSamliphopangche_Outline";
     box-shadow: rgba(0, 0, 0, 0.329) 5px 5px 5px 5px;
+  }
+  .slider2 {
+    position: relative;
+    left: -40vh;
+    display: flex;
+    width: 197.2vh;
+    height: 40vh;
+    overflow: hidden;
+  }
+  .slide2 {
+    padding: 3px;
+    width: 25%;
+    height: 100%;
   }
   .slide {
     overflow: hidden;
@@ -633,7 +666,7 @@ transform: rotate(-30deg);
   }
   /* -----------------return 고양이 머리가 디스플레이논 밑에 새로운머리---------------------------- */
   #toggleBtn8:checked ~ .root1 {
-    animation: active2 1s ;
+    animation: active2 1s;
     animation-fill-mode: both;
   }
   #toggleBtn8:checked ~ .root2 {
@@ -659,7 +692,6 @@ transform: rotate(-30deg);
   #toggleBtn8:checked ~ .root7 {
     animation: scale7r 1s 3.5s;
     animation-fill-mode: both;
-    animation-iteration-count: ;
   }
   #toggleBtn8:checked ~ .root8 {
     /* z-index: 10; */
@@ -675,7 +707,7 @@ transform: rotate(-30deg);
   }
   .exit:hover .hide {
     display: block;
-    transform: rotate(-90deg) ;
+    transform: rotate(-90deg);
   }
   #paw2 {
     animation: rotate2 3s linear infinite;
@@ -1037,4 +1069,15 @@ transform: rotate(-30deg);
     }
   }
   /* ----------------------------------여기까지3번----------------------------------- */
+  .info {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    left: -45vh;
+    background-color: #a67c52;
+}
+.info img {
+    width: 40%;
+    height: 100%;
+}
 }
