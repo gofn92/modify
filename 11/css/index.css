@@ -328,6 +328,7 @@
 
   /* -------------------3번------------------------------------------------------------------------------------------- */
   .catbody {
+    display: none;
     overflow: hidden;
     width: 120vh;
     background-image: url(../image/room.gif);
@@ -1108,5 +1109,15 @@ transform: rotate(-30deg);
     width: 100%;
     height: 100%;
     
+  }
+  .con3 {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    
+  }
+  .con3 img {
+    width: 90%;
+    height: 100%;
   }
 }
