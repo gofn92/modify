@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/paging.css">
     <script src="js/jquery.js"></script>
     <script src="js/paging.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <style>
 /* 공통 스타일 */
         @font-face {
@@ -36,10 +38,10 @@
             /* background: url(image/white.gif); */
         }
         a{color:black;}
-        .loading{
+        /* .loading{
                 position: fixed;
                 top: 0; left: 0;
-        }
+        } */
         .con{
             height: 100%; width: 90%;
         }
@@ -47,6 +49,7 @@
                 font-family: 'SDSamliphopangche_Outline';
             }
         header{
+            top: 3vh;
             height: 80px;
             display: flex;
             position:relative;
@@ -55,9 +58,13 @@
             /* padding: 8px 12px; */
             background: rgba(255,255,255,0.5);  
         }
-        
+        .logo {
+            width: 10%;
+            position: relative;
+            left: 0%;
+        }
         .logo img{
-            width: 65px; height: 65px;
+            width: 200px; height: 100px;
         }
         header ul{
             display: flex;
@@ -68,6 +75,9 @@
         }
         header ul li{
             /* padding: 10px 20px; */
+            font-family: 'Nanum Pen Script';
+            font-weight: normal;
+            font-style: normal;
             width : 30%;
             height : 50px;
             display: flex;
@@ -75,9 +85,6 @@
             justify-content: space-around;
             transition: 0.5s;
             /* padding: 10px 0; */
-        }
-        header ul li img{
-            width: 100px; height: 50px;
         }
         header ul li button{
             cursor: pointer;
@@ -544,26 +551,33 @@
         .container0{
             display: block;
         }
+        h2 {
+            
+            font-family: 'Nanum Pen Script';
+            font-weight: normal;
+            font-style: normal;
+        }
+        
     </style>
 </head>
 <body>
-    <div class="loading">
-        <!-- <video id="video1" src="image/냥냥첩첩.avi" width="100%" height="100%" autoplay muted></video> -->
-        <!-- <video id="video1" src="image/냥냥첩첩.avi" width="100%" height="100%" muted></video> -->
-    </div>
+    <!-- <div class="loading">
+        <!-- <video id="video1" src="image/냥냥첩첩.avi" width="100%" height="100%" autoplay muted></video> 
+        <!-- <video id="video1" src="image/냥냥첩첩.avi" width="100%" height="100%" muted></video> 
+    </div> -->
     <div class="con">
+        <div class="logo">
+            <img src="image/LOGO_HOUSE.png" alt="logo">
+        </div>
         <header>
-            <div class="logo">
-                <img src="image/logo_brown.png" alt="logo">
-            </div>
             <ul>
-                <li class="menubtn" onclick="changecon(0);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(1);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(2);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(3);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(4);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(5);"><img src="image/dlqdid.gif" alt=""></li>
-                <li class="menubtn" onclick="changecon(6);"><img src="image/dlqdid.gif" alt=""></li>
+                <li class="menubtn" onclick="changecon(0);">입양후기</li>
+                <li class="menubtn" onclick="changecon(1);">입양후기</li>
+                <li class="menubtn" onclick="changecon(2);">입양후기</li>
+                <li class="menubtn" onclick="changecon(3);">입양후기</li>
+                <li class="menubtn" onclick="changecon(4);">입양후기</li>
+                <li class="menubtn" onclick="changecon(5);">입양후기</li>
+                <li class="menubtn" onclick="changecon(6);">입양후기</li>
             </ul>
             <div class="logging">
                 <a href="signIn.html"> 로그인 </a>
@@ -572,19 +586,12 @@
         </header>
         <section class="container container0">
             <div class="cont">
-                <div class="bg" style="background-image: url(./image/bg.jpg);"></div>
-                <div class="dot">
-                
-                </div>
-                <div class="choco2">
-                    <img class="a1" src="./image/t.png" width="6%"  alt="">
-                    <img class="a2" src="./image/i.png" width="6%"  alt="">
-                    <img class="a1" src="./image/e.png" width="6%"  alt="">
-                    <img class="a2" src="./image/r.png" width="6%"  alt="">
-                    <img class="a1" src="./image/h.png" width="6%"  alt="">
-                    <img class="a2" src="./image/e.png" width="6%"  alt="">
-                    <img class="a1" src="./image/i.png" width="6%"  alt="">
-                    <img class="a2" src="./image/m.png" width="6%"  alt="">
+                <div class="bg"></div>
+                <div class="mask">
+                    <br><br><br> 
+                    <p>펫샵이 아닌</p>
+                    <p>진짜 보호소</p>
+                    <p>TIERHEIM</p>
                 </div>
                 <div class="slider">
                     <img class="slide" src="./image/Bgle.jpg" width="100%" alt="">
@@ -593,46 +600,31 @@
                     <img class="slide" src="./image/c7.jpg"alt="">
                     <a class="prev" onclick="button_click(-1)"><img src="./image/dog_paw.png" width="100%" alt=""></a>
                     <a class="next" onclick="button_click(1)"><img src="./image/dog_paw.png" width="100%" alt=""></a>
-                    <div class="idle"><h2>입양가능한아이들</h2></div>
                 </div>
-                    <!--<div class="menu-con">
-                    <div class="menu1">
-                        <img class="paw1" src="./image/발바닥.gif" width="20%" alt="">
-                        <a href="#" onclick="changecon(2);"><img class="men1" src="./image/보호소소개.gif" width="15%" alt=""></a>
-                    </div>
-                    <div class="menu2">
-                        <img class="paw2" src="./image/발바닥_얼룩.png" width="10%" alt="">
-                        <a href="#" onclick="changecon(3);"><img class="men2" src="./image/입양입소안내.gif" width="15%" alt=""></a>
-                    </div>
-                    <div class="menu3">
-                        <img class="paw3" src="./image/발바닥_블랙.png" width="30%" alt="">
-                        <a href="#" onclick="changecon(4);"><img class="men3" src="./image/오시는길.gif" width="15%" alt=""></a>
-                    </div>
-                    <div class="menu4">
-                        <img class="paw4" src="./image/발바닥_그레이.png" width="20%" alt="">
-                        <a href="#" onclick="changecon(5);"><img class="men4" src="./image/애견용품샵.gif" width="15%" alt=""></a>
-                    </div>
-                    <div class="menu5">
-                        <img class="paw5" src="./image/발바닥_브라운.png" width="10%" alt="">
-                        <a href="#" onclick="changecon(6);"><img class="men5" src="./image/입양후기.gif" width="15%" alt=""></a>
-                    </div>
-                    <div class="menu6">
-                        <img class="paw6" src="./image/발바닥.gif" width="25%" alt="">
-                        <a href="#" onclick="changecon(1);"><img class="men6" src="./image/입양후기.gif" width="15%" alt=""></a>
-                    </div>
-                </div>-->
-                <div class="dog1">
-                    <img src="./image/support_320.png" alt="">
+                <br><br><br><br>
+                <h2>TIERHEIM의 시설물</h2>
+                <br>
+                <div class="slider2">
+                    <img class="slide2" src="./image/sleep_cat.jpg" alt="">
+                    <img class="slide2" src="./image/sleep_cat.jpg" alt="">
+                    <img class="slide2" src="./image/sleep_cat.jpg" alt="">
+                    <img class="slide2" src="./image/sleep_cat.jpg" alt="">
+                    <img class="slide2" src="./image/dog99.jpg" alt="">
+                    <img class="slide2" src="./image/dog99.jpg" alt="">
+                    <img class="slide2" src="./image/dog99.jpg" alt="">
+                    <img class="slide2" src="./image/dog99.jpg" alt="">
                 </div>
-                <div class="ap">
-                    <img src="./image/apjung.png" width="15%" alt="">
+                <br><br><br><br>
+                <h2>알고계셨나요?</h2>
+                <br>
+                <div class="info">
+                    <img src="./image/choco.gif" alt="">
                 </div>
-                <div class="post_it">
-                    <img src="./image/post_active.gif" width="80%" alt="">
-                    <p style="position: absolute; left: 45%;top: 40%;">💕</p>
-                </div>
-                <div class="cat">
-                    <video class="eat"src="./image/cat_eat_320.mp4" loop muted autoplay width="20%" height="20%" ></video>
+                <br><br><br><br>
+                <h2>알고계셨나요?</h2>
+                <br>
+                <div class="monthCat">
+                    <img src="./image/초콜릿.gif" alt="">
                 </div>
             </div>
         </section>
