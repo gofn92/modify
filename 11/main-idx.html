@@ -179,156 +179,164 @@
 /* 보호현황 시작 */
         .container3{
             width: 100%;
+            background: url(image/bg.jpg);
         }    
-        .container3 article{
-            margin: 100px 0;
+        .container3 #ajd{
+            height: 100vh;
         }
-            .box{
-                height: 100%; width: 100%;
-                background: transparent;
-                background-repeat: no-repeat;
-                background-size: cover;
-                position: relative;
-                display: grid;
-                grid-template-columns: repeat(20%);
-                place-items: center center;
-                /* overflow: hidden; */
-            }
-            .s-box{
-                width: 256px; height: 320px;
-                perspective: 1000px;
-                transform-style: preserve-3d;
-            }
-            .s-box:nth-child(1){
-                grid-column: 1/1;
-            }
-            .s-box:nth-child(2){
-                grid-column: 2/2;
-            }
-            .s-box:nth-child(3){
-                grid-column: 3/3;
-            }   
-            .s-box:nth-child(4){
-                grid-column: 4/4;
-            }
+        .container3 #cat{
+            margin-top: 100px;
+        }
+        
+        .box{
+            height: 100%; width: 100%;
+            background: transparent;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(20%);
+            place-items: center center;
+            /* overflow: hidden; */
+        }
+        .s-box{
+            width: 256px; height: 320px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .s-box:nth-child(1){
+            grid-column: 1/1;
+        }
+        .s-box:nth-child(2){
+            grid-column: 2/2;
+        }
+        .s-box:nth-child(3){
+            grid-column: 3/3;
+        }   
+        .s-box:nth-child(4){
+            grid-column: 4/4;
+        }
 
 
-            .s-box .front1,.front2,.front3,.front4,.front5,.front6,.front7,.front8,
-            .front9,.front10,.front11,.front12,.front13,.front14,.front15,.front16,
-            .s-box .back1,.back2,.back3,.back4,.back5,.back6,.back7,.back8,
-            .back9,.back10,.back11,.back12,.back13,.back14,.back15,.back16{
-                background-size: cover;
-                background-position: center;
-                transition: all 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-                border-radius: 10px;
-                backface-visibility: hidden;
-                text-align: center;
-                height: 320px; width: 300px;
-                /* color: #fff; */
-            }
-            .s-box .back1, .back2, .back3, .back4,.back5,.back6,.back7,.back8,
-            .back9,.back10,.back11,.back12,.back13,.back14,.back15,.back16{
-                /* background: url(image/bg.jpg); */
-                background: rgba(222, 184, 135,0.3)	;
-                background-size: cover;
-                background-repeat: no-repeat;
-                position: absolute;
-                top: 0; left: 0; bottom: 0; right: 0;
-                width: 280px; height: 420px;
-                border-radius: 10px;
-                z-index: -11;
-                text-align: center;
-                line-height: 25px;
-            }
+        .s-box .front1,.front2,.front3,.front4,.front5,.front6,.front7,.front8,
+        .front9,.front10,.front11,.front12,.front13,.front14,.front15,.front16,
+        .s-box .back1,.back2,.back3,.back4,.back5,.back6,.back7,.back8,
+        .back9,.back10,.back11,.back12,.back13,.back14,.back15,.back16{
+            background-size: cover;
+            background-position: center;
+            transition: all 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            border-radius: 10px;
+            backface-visibility: hidden;
+            text-align: center;
+            height: 320px; width: 300px;
+            /* color: #fff; */
+        }
+        .s-box .back1, .back2, .back3, .back4,.back5,.back6,.back7,.back8,
+        .back9,.back10,.back11,.back12,.back13,.back14,.back15,.back16{
+            background: white;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            width: 280px; height: 420px;
+            border-radius: 10px;
+            z-index: -11;
+            text-align: center;
+            line-height: 25px;
+        }
 
-            .front1,
-            .front2,
-            .front3,
-            .front4,
-            .front4,
-            .front5,
-            .front6,
-            .front7,
-            .front8,
-            .front9,
-            .front10,
-            .front11,
-            .front12,
-            .front13,
-            .front14,
-            .front15,
-            .front16{
-                transform: rotateY(0deg);
-                transform-style: preserve-3d;
-            }
-
-
-            .back1,
-            .back2,
-            .back3,
-            .back4,
-            .back5,
-            .back6,
-            .back7,
-            .back8,
-            .back9,
-            .back10,
-            .back11,
-            .back12,
-            .back13,
-            .back14,
-            .back15,
-            .back16{
-                transform: rotateY(-180deg);
-                transform-style: preserve-3d;
-            }
+        .front1,
+        .front2,
+        .front3,
+        .front4,
+        .front4,
+        .front5,
+        .front6,
+        .front7,
+        .front8,
+        .front9,
+        .front10,
+        .front11,
+        .front12,
+        .front13,
+        .front14,
+        .front15,
+        .front16{
+            transform: rotateY(0deg);
+            transform-style: preserve-3d;
+        }
 
 
-            .front .inner{
-                background: url(image/pola.png);
-                background-repeat: no-repeat;
-                width: 300px; height: 400px;
-                display: flex;
-                align-items: flex-start;
-                position: relative;
-                backface-visibility: hidden;
-            }
-            .front .inner img{
-                width: 280px; height: 300px;
-            }
-            .front .inner p{
-                position: absolute;
-                bottom: 0px; left: 50%;
-                transform: translate(-50%,-50%);
-                opacity: 0;
-                transition: 0.5s;
-            }
-            .s-box .front .inner:hover > p{
-                opacity: 1;
-                position: absolute;
-                bottom: 40px;
-            }
-            .active{
-                transform: rotateY(180deg);
-                transform-style: preserve-3d;
-                transition: all 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
-            }
+        .back1,
+        .back2,
+        .back3,
+        .back4,
+        .back5,
+        .back6,
+        .back7,
+        .back8,
+        .back9,
+        .back10,
+        .back11,
+        .back12,
+        .back13,
+        .back14,
+        .back15,
+        .back16{
+            transform: rotateY(-180deg);
+            transform-style: preserve-3d;
+            z-index: -11;
+        }
 
-            .active1{
-                transform: rotateY(0deg);
-                transform-style: preserve-3d;
-                transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
-            }
-            .active2{
-                transform: rotateY(0deg);
-                transform-style: preserve-3d;
-                transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
-            }
-            .active3{
-                transform: rotateY(-180deg);
-                transform-style: preserve-3d;
-                transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
-            }
+
+        .front .inner{
+            background: url(image/pola.png);
+            background-repeat: no-repeat;
+            width: 300px; height: 400px;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            backface-visibility: hidden;
+        }
+        .front .inner img{
+            position: absolute;
+            top: 20px; left: 15px;
+            width: 270px; height: 290px;
+            cursor: pointer;
+        }
+        .front .inner p{
+            position: absolute;
+            bottom: 0px; left: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .s-box .front .inner:hover > p{
+            opacity: 1;
+            position: absolute;
+            bottom: 40px;
+        }
+        .active{
+            transform: rotateY(180deg);
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        .active1{
+            transform: rotateY(0deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .active2{
+            transform: rotateY(0deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+        .active3{
+            transform: rotateY(-180deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
 /* 보호현황 끝 */
 /* 입양후기 */
         .container4{
@@ -748,13 +756,13 @@
                 <!-- <div class="탭"></div>-->
             </div>
         </section>
+        <h2 style="text-align: center; margin: 30px 0;">
+            Tierheim에서 구조/입소하여 
+            보호중인 아이들 입니다. <br>
+            사진을 클릭시 아이들의 간단한 정보가 기재되어있습니다.
+        </h2>
         <section class="container container3">
             <article id="ajd">
-            <h2>
-                Tierheim에서 구조/입소하여 
-                보호중인 아이들 입니다. <br>
-                사진을 클릭시 아이들의 간단한 정보가 기재되어있습니다.
-            </h2>
             <br> <br>
             <h2>강아지 보호 현황</h2>
             <div class="box" id="box">
@@ -931,7 +939,7 @@
                     </div>
                 </div>
             </article>
-            <article>
+            <article id="cat">
             <h2>고양이 보호 현황</h2>
             <div class="box" id="box">
                     <div class="s-box" id="sBox">
