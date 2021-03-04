@@ -120,7 +120,32 @@
             background: rgba(0,0,0,0.5);
             width: 250px; height: 300px;
         }
-
+        #item1 article .content-item1 p{
+            position: absolute;
+            top: 10%; left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, #ffeeaa 0%, #7ebfeb 100%);
+            color: black;
+            z-index: 0;
+            font-family: 'Cafe24Dongdong';
+            font-weight: bolder;
+            width: 120px; height: 30px;
+            text-align: center;
+            padding-top: 5px;
+            transition: 0.5s;
+            z-index: 999;
+            cursor: pointer;
+        }
+        #item1 article .content-item1 a{
+            width: 250px; height: 300px;
+            position: absolute;
+            top: 0;
+            outline: none;
+            transition: 0.5s;
+        }
+        #item1 article .content-item1:hover{
+            transform: scale(1.2);
+        }
         #item1 .im-ready p{
             position: absolute;
             top: 40%; left: 20%;
@@ -177,7 +202,8 @@
         </section>
         <section id="item1">
             <article>
-                <div class="content-item">
+                <div class="content-item content-item1">
+                    <p>제품보러가기</p>
                     <a href="shop-dog.html"><img src="image/pp3.png" alt="item1" width="250px" height="300px"></a>
                 </div>
                 <div class="content-item im-ready">
