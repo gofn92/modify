@@ -5,7 +5,6 @@ $(document).ready(function($){
     // 메인 로딩화면
     $(window).load(function(){
         $('.rocon').delay(4000).fadeOut(2000);
-        
     });
 
 
@@ -38,70 +37,65 @@ $(document).ready(function($){
     (function($){
 
         $(window).scroll(function(){
-                var sct = $(window).scrollTop();
+            var sct = $(window).scrollTop();
 
-                var boo1 = $('.article1').offset().top - $(window).height()/2;
+            var boo1 = $('.article1').offset().top - $(window).height()/2;
 
-                if(sct >= boo1){
-                    $('.article1').addClass('on')
-                } 
-                // else if (sct < boo1 ) {
-                //     $('.article1').removeClass('on')
-                // }
+            if(sct >= boo1){
+                $('.article1').addClass('on')
+            } 
+            // else if (sct < boo1 ) {
+            //     $('.article1').removeClass('on')
+            // }
 
-                
-                var boo2 = $('.article2').offset().top - $(window).height()/2;
+            
+            var boo2 = $('.article2').offset().top - $(window).height()/2;
 
-                if(sct >= boo2){
-                    $('.article2 > div').stop().css({
-                        transform : "translateX(0%)",
-                        transition : "all 1.5s"
-                    })
-                } 
-                // else if (sct < boo2) {
-                //     $('.article2 > div').stop().css({
-                //         transform : "translateX(100%)",
-                //         transition : "all 2.5s"
-                //     })
-                // }
+            if(sct >= boo2){
+                $('.article2 > div').stop().css({
+                    transform : "translateX(0%)",
+                    transition : "all 1.5s"
+                })
+            } 
+            // else if (sct < boo2) {
+            //     $('.article2 > div').stop().css({
+            //         transform : "translateX(100%)",
+            //         transition : "all 2.5s"
+            //     })
+            // }
 
-                var boo3 = $('.article3').offset().top - $(window).height()/2;
+            var boo3 = $('.article3').offset().top - $(window).height()/2;
 
-                if(sct >= boo3){
-                    $('.article3 > div').stop().css({
-                        transform : "translateX(0%)",
-                        transition : "all 1.5s"
-                    })
-                } 
-                // else if (sct < boo3) {
-                //     $('.article3 > div').stop().css({
-                //         transform : "translateX(-100%)",
-                //         transition : "all 2.5s"
-                //     })
-                // }
-                
+            if(sct >= boo3){
+                $('.article3 > div').stop().css({
+                    transform : "translateX(0%)",
+                    transition : "all 1.5s"
+                })
+            } 
+            // else if (sct < boo3) {
+            //     $('.article3 > div').stop().css({
+            //         transform : "translateX(-100%)",
+            //         transition : "all 2.5s"
+            //     })
+            // }
+            
 
-                var boo4 = $('.article4').offset().top - $(window).height()/2;
+            var boo4 = $('.article4').offset().top - $(window).height()/2;
 
-                if(sct >= boo4){
-                    $('.article4 > div').stop().css({
-                        transform : "translateX(0%)",
-                        transition : "all 1.5s"
-                    })
-                } 
-                // else if (sct < boo4) {
-                //     $('.article4 > div').stop().css({
-                //         transform : "translateX(100%)",
-                //         transition : "all 2.5s"
-                //     })
-                // }
-                
-             
-
+            if(sct >= boo4){
+                $('.article4 > div').stop().css({
+                    transform : "translateX(0%)",
+                    transition : "all 1.5s"
+                })
+            } 
+            // else if (sct < boo4) {
+            //     $('.article4 > div').stop().css({
+            //         transform : "translateX(100%)",
+            //         transition : "all 2.5s"
+            //     })
+            // }
         });
     })(jQuery)
-    
-
 });
 
 
