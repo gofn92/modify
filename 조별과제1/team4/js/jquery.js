@@ -1,49 +1,49 @@
-/ *!
- * jQuery JavaScript 라이브러리 v3.6.0 -ajax, -ajax / jsonp, -ajax / load, -ajax / script, -ajax / var / location, -ajax / var / nonce, -ajax / var / rquery, -ajax / xhr , -manipulation / _evalUrl, -deprecated / ajax-event-alias, -effects, -effects / Tween, -effects / animatedSelector
+/*!
+ * jQuery JavaScript Library v3.6.0 -ajax,-ajax/jsonp,-ajax/load,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-deprecated/ajax-event-alias,-effects,-effects/Tween,-effects/animatedSelector
  * https://jquery.com/
  *
- * Sizzle.js 포함
+ * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * 저작권 OpenJS Foundation 및 기타 기여자
- * MIT 라이선스로 출시
+ * Copyright OpenJS Foundation and other contributors
+ * Released under the MIT license
  * https://jquery.org/license
  *
- * 날짜 : 2021-03-02T17 : 08Z
- * /
-(function (global, factory) {
+ * Date: 2021-03-02T17:08Z
+ */
+( function( global, factory ) {
 
-	"엄격한 사용";
+	"use strict";
 
-	if (typeof module === "object"&& typeof module.exports === "object") {
+	if ( typeof module === "object" && typeof module.exports === "object" ) {
 
-		// 적절한`window`가있는 CommonJS 및 CommonJS 유사 환경
-		// 존재하면 팩토리를 실행하고 jQuery를 가져옵니다.
-		//`document`가있는`window`가없는 환경
-		// (예 : Node.js), 팩토리를 module.exports로 노출합니다.
-		// 이것은 실제`창`을 생성 할 필요성을 강조합니다.
-		// 예 var jQuery = require ( "jquery") (window);
-		// 자세한 내용은 티켓 # 14549를 참조하십시오.
-		module.exports = global.document?
-			공장 (global, true) :
-			function (w) {
-				if (! w.document) {
-					throw new Error ( "jQuery에는 문서가있는 창이 필요합니다");
+		// For CommonJS and CommonJS-like environments where a proper `window`
+		// is present, execute the factory and get jQuery.
+		// For environments that do not have a `window` with a `document`
+		// (such as Node.js), expose a factory as module.exports.
+		// This accentuates the need for the creation of a real `window`.
+		// e.g. var jQuery = require("jquery")(window);
+		// See ticket #14549 for more info.
+		module.exports = global.document ?
+			factory( global, true ) :
+			function( w ) {
+				if ( !w.document ) {
+					throw new Error( "jQuery requires a window with a document" );
 				}
-				반환 공장 (w);
+				return factory( w );
 			};
 	} else {
-		공장 (글로벌);
+		factory( global );
 	}
 
-// 창이 아직 정의되지 않은 경우 전달
-}) (typeof window! == "undefined"? window : this, function (window, noGlobal) {
+// Pass this if window is not defined yet
+} )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
-// Edge <= 12-13 +, Firefox <= 18-45 +, IE 10-11, Safari 5.1-9+, iOS 6-9.1
-// 엄격하지 않은 코드 (예 : ASP.NET 4.5)가 엄격 모드에 액세스 할 때 예외 발생
-// arguments.callee.caller (trac-13335). 하지만 jQuery 3.0 (2016)부터 엄격 모드가 일반적이어야합니다.
-// 이러한 모든 시도가 try 블록에서 보호되기에 충분합니다.
-"엄격한 사용";
+// Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
+// throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
+// arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
+// enough that all such attempts are guarded in a try block.
+"use strict";
 
 var arr = [];
 
@@ -51,10 +51,10 @@ var getProto = Object.getPrototypeOf;
 
 var slice = arr.slice;
 
-var flat = arr.flat? 함수 (배열) {
-	return arr.flat.call (array);
-} : 함수 (배열) {
-	return arr.concat.apply ([], array);
+var flat = arr.flat ? function( array ) {
+	return arr.flat.call( array );
+} : function( array ) {
+	return arr.concat.apply( [], array );
 };
 
 
@@ -70,26 +70,26 @@ var hasOwn = class2type.hasOwnProperty;
 
 var fnToString = hasOwn.toString;
 
-var ObjectFunctionString = fnToString.call (Object);
+var ObjectFunctionString = fnToString.call( Object );
 
 var support = {};
 
-var isFunction = function isFunction (obj) {
+var isFunction = function isFunction( obj ) {
 
-		// 지원 : Chrome <= 57, Firefox <= 52
-		// 일부 브라우저에서 typeof는 HTML <object> 요소에 대해 "함수"를 반환합니다.
-		// (즉,`typeof document.createElement ( "object") === "function"`).
-		// * 모든 * DOM 노드를 함수로 분류하고 싶지 않습니다.
-		// 지원 : QtWeb <= 3.8.5, WebKit <= 534.34, wkhtmltopdf 도구 <= 0.12.5
-		// 또한 이전 WebKit의 경우 typeof는 HTML 컬렉션에 대해 "함수"를 반환합니다.
-		// (예 :`typeof document.getElementsByTagName ( "div") === "function"`). (gh-4756)
-		return typeof obj === "함수"&& typeof obj.nodeType! == "숫자"&&
-			typeof obj.item! == "기능";
+		// Support: Chrome <=57, Firefox <=52
+		// In some browsers, typeof returns "function" for HTML <object> elements
+		// (i.e., `typeof document.createElement( "object" ) === "function"`).
+		// We don't want to classify *any* DOM node as a function.
+		// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+		// Plus for old WebKit, typeof returns "function" for HTML collections
+		// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+		return typeof obj === "function" && typeof obj.nodeType !== "number" &&
+			typeof obj.item !== "function";
 	};
 
 
-var isWindow = function isWindow (obj) {
-		return obj! = null && obj === obj.window;
+var isWindow = function isWindow( obj ) {
+		return obj != null && obj === obj.window;
 	};
 
 
@@ -98,1160 +98,1160 @@ var document = window.document;
 
 
 	var preservedScriptAttributes = {
-		유형 : true,
-		src : 참,
-		nonce : 참,
-		noModule : true
+		type: true,
+		src: true,
+		nonce: true,
+		noModule: true
 	};
 
-	function DOMEval (코드, 노드, 문서) {
-		doc = doc || 문서;
+	function DOMEval( code, node, doc ) {
+		doc = doc || document;
 
 		var i, val,
-			script = doc.createElement ( "script");
+			script = doc.createElement( "script" );
 
-		script.text = 코드;
-		if (노드) {
-			for (나는 preservedScriptAttributes) {
+		script.text = code;
+		if ( node ) {
+			for ( i in preservedScriptAttributes ) {
 
-				// 지원 : Firefox 64+, Edge 18+
-				// 일부 브라우저는 스크립트에서 "nonce"속성을 지원하지 않습니다.
-				// 반면에`getAttribute`를 사용하는 것만으로는 충분하지 않습니다.
-				//`nonce` 속성은 항상 빈 문자열로 재설정됩니다.
-				// 브라우징 컨텍스트가 연결됩니다.
-				// https://github.com/whatwg/html/issues/2369 참조
-				// https://html.spec.whatwg.org/#nonce-attributes 참조
-				//`node.getAttribute` 검사가 추가되었습니다.
-				//`jQuery.globalEval`을 사용하여 nonce 포함 노드를 가짜로 만들 수 있습니다.
-				// 객체를 통해.
-				val = node [i] || node.getAttribute && node.getAttribute (i);
-				if (val) {
-					script.setAttribute (i, val);
+				// Support: Firefox 64+, Edge 18+
+				// Some browsers don't support the "nonce" property on scripts.
+				// On the other hand, just using `getAttribute` is not enough as
+				// the `nonce` attribute is reset to an empty string whenever it
+				// becomes browsing-context connected.
+				// See https://github.com/whatwg/html/issues/2369
+				// See https://html.spec.whatwg.org/#nonce-attributes
+				// The `node.getAttribute` check was added for the sake of
+				// `jQuery.globalEval` so that it can fake a nonce-containing node
+				// via an object.
+				val = node[ i ] || node.getAttribute && node.getAttribute( i );
+				if ( val ) {
+					script.setAttribute( i, val );
 				}
 			}
 		}
-		doc.head.appendChild (script) .parentNode.removeChild (script);
+		doc.head.appendChild( script ).parentNode.removeChild( script );
 	}
 
 
-function toType (obj) {
-	if (obj == null) {
+function toType( obj ) {
+	if ( obj == null ) {
 		return obj + "";
 	}
 
-	// 지원 : Android <= 2.3 전용 (기능적 RegExp)
-	return typeof obj === "object"|| typeof obj === "기능"?
-		class2type [toString.call (obj)] || "객체":
+	// Support: Android <=2.3 only (functionish RegExp)
+	return typeof obj === "object" || typeof obj === "function" ?
+		class2type[ toString.call( obj ) ] || "object" :
 		typeof obj;
 }
-/ * 글로벌 심볼 * /
-// .eslintrc.json에서이 전역을 정의하면 전역을 사용할 위험이 있습니다.
-// 다른 곳에서 보호되지 않는 경우이 모듈에 대해서만 전역을 정의하는 것이 더 안전 해 보입니다.
+/* global Symbol */
+// Defining this global in .eslintrc.json would create a danger of using the global
+// unguarded in another place, it seems safer to define global only for this module
 
 
 
 var
-	버전 = "3.6.0 -ajax, -ajax / jsonp, -ajax / load, -ajax / script, -ajax / var / location, -ajax / var / nonce, -ajax / var / rquery, -ajax / xhr, -manipulation / _evalUrl, -deprecated / ajax-event-alias, -effects, -effects / Tween, -effects / animatedSelector ",
+	version = "3.6.0 -ajax,-ajax/jsonp,-ajax/load,-ajax/script,-ajax/var/location,-ajax/var/nonce,-ajax/var/rquery,-ajax/xhr,-manipulation/_evalUrl,-deprecated/ajax-event-alias,-effects,-effects/Tween,-effects/animatedSelector",
 
-	// jQuery의 로컬 사본 정의
-	jQuery = function (선택자, 컨텍스트) {
+	// Define a local copy of jQuery
+	jQuery = function( selector, context ) {
 
-		// jQuery 객체는 실제로 '향상된'초기화 생성자입니다.
-		// jQuery가 호출되면 초기화 필요 (포함되지 않은 경우 오류가 발생하도록 허용)
-		return new jQuery.fn.init (selector, context);
+		// The jQuery object is actually just the init constructor 'enhanced'
+		// Need init if jQuery is called (just allow error to be thrown if not included)
+		return new jQuery.fn.init( selector, context );
 	};
 
 jQuery.fn = jQuery.prototype = {
 
-	// 현재 사용중인 jQuery 버전
-	jquery : 버전,
+	// The current version of jQuery being used
+	jquery: version,
 
-	생성자 : jQuery,
+	constructor: jQuery,
 
-	// jQuery 객체의 기본 길이는 0입니다.
-	길이 : 0,
+	// The default length of a jQuery object is 0
+	length: 0,
 
-	toArray : function () {
-		return slice.call (this);
+	toArray: function() {
+		return slice.call( this );
 	},
 
-	// 일치하는 요소 집합에서 N 번째 요소를 가져옵니다. 또는
-	// 전체 일치 요소 집합을 깨끗한 배열로 가져옵니다.
-	get : function (num) {
+	// Get the Nth element in the matched element set OR
+	// Get the whole matched element set as a clean array
+	get: function( num ) {
 
-		// 깨끗한 배열의 모든 요소를 ​​반환
-		if (num == null) {
-			return slice.call (this);
+		// Return all the elements in a clean array
+		if ( num == null ) {
+			return slice.call( this );
 		}
 
-		// 집합에서 하나의 요소 만 반환
-		return num <0? this [num + this.length] : this [num];
+		// Return just the one element from the set
+		return num < 0 ? this[ num + this.length ] : this[ num ];
 	},
 
-	// 요소 배열을 가져와 스택에 푸시
-	// (새로 일치하는 요소 집합 반환)
-	pushStack : function (elems) {
+	// Take an array of elements and push it onto the stack
+	// (returning the new matched element set)
+	pushStack: function( elems ) {
 
-		// 새로운 jQuery 일치 요소 집합을 만듭니다.
-		var ret = jQuery.merge (this.constructor (), elems);
+		// Build a new jQuery matched element set
+		var ret = jQuery.merge( this.constructor(), elems );
 
-		// 스택에 이전 객체를 추가합니다 (참조로).
-		ret.prevObject = 이것;
+		// Add the old object onto the stack (as a reference)
+		ret.prevObject = this;
 
-		// 새로 형성된 요소 집합을 반환합니다.
-		반환 ret;
+		// Return the newly-formed element set
+		return ret;
 	},
 
-	// 일치하는 집합의 모든 요소에 대해 콜백을 실행합니다.
-	각각 : function (callback) {
-		return jQuery.each (this, callback);
+	// Execute a callback for every element in the matched set.
+	each: function( callback ) {
+		return jQuery.each( this, callback );
 	},
 
-	지도 : function (callback) {
-		return this.pushStack (jQuery.map (this, function (elem, i) {
-			return callback.call (elem, i, elem);
-		}));
+	map: function( callback ) {
+		return this.pushStack( jQuery.map( this, function( elem, i ) {
+			return callback.call( elem, i, elem );
+		} ) );
 	},
 
-	슬라이스 : function () {
-		return this.pushStack (slice.apply (this, arguments));
+	slice: function() {
+		return this.pushStack( slice.apply( this, arguments ) );
 	},
 
-	첫 번째 : function () {
-		return this.eq (0);
+	first: function() {
+		return this.eq( 0 );
 	},
 
-	last : function () {
-		return this.eq (-1);
+	last: function() {
+		return this.eq( -1 );
 	},
 
-	짝수 : function () {
-		return this.pushStack (jQuery.grep (this, function (_elem, i) {
-			반환 (i + 1) % 2;
-		}));
+	even: function() {
+		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
+			return ( i + 1 ) % 2;
+		} ) );
 	},
 
-	홀수 : function () {
-		return this.pushStack (jQuery.grep (this, function (_elem, i) {
-			반환 i % 2;
-		}));
+	odd: function() {
+		return this.pushStack( jQuery.grep( this, function( _elem, i ) {
+			return i % 2;
+		} ) );
 	},
 
-	eq : function (i) {
+	eq: function( i ) {
 		var len = this.length,
-			j = + i + (i <0? len : 0);
-		return this.pushStack (j> = 0 && j <len? [this [j]] : []);
+			j = +i + ( i < 0 ? len : 0 );
+		return this.pushStack( j >= 0 && j < len ? [ this[ j ] ] : [] );
 	},
 
-	끝 : function () {
-		return this.prevObject || this.constructor ();
+	end: function() {
+		return this.prevObject || this.constructor();
 	},
 
-	// 내부 전용입니다.
-	// jQuery 메소드가 아닌 Array의 메소드처럼 동작합니다.
-	밀어 밀어,
-	정렬 : arr.sort,
-	스플 라이스 : arr.splice
+	// For internal use only.
+	// Behaves like an Array's method, not like a jQuery method.
+	push: push,
+	sort: arr.sort,
+	splice: arr.splice
 };
 
-jQuery.extend = jQuery.fn.extend = function () {
-	var 옵션, 이름, src, copy, copyIsArray, clone,
-		대상 = 인수 [0] || {},
-		나는 = 1,
-		길이 = arguments.length,
-		깊은 = 거짓;
+jQuery.extend = jQuery.fn.extend = function() {
+	var options, name, src, copy, copyIsArray, clone,
+		target = arguments[ 0 ] || {},
+		i = 1,
+		length = arguments.length,
+		deep = false;
 
-	// 전체 복사 상황 처리
-	if (typeof target === "boolean") {
-		깊이 = 목표;
+	// Handle a deep copy situation
+	if ( typeof target === "boolean" ) {
+		deep = target;
 
-		// 부울과 타겟 건너 뛰기
-		대상 = 인수 [i] || {};
-		i ++;
+		// Skip the boolean and the target
+		target = arguments[ i ] || {};
+		i++;
 	}
 
-	// 대상이 문자열 또는 무언가 일 때 케이스 처리 (딥 카피에서 가능)
-	if (typeof target! == "object"&&! isFunction (target)) {
-		목표 = {};
+	// Handle case when target is a string or something (possible in deep copy)
+	if ( typeof target !== "object" && !isFunction( target ) ) {
+		target = {};
 	}
 
-	// 인수가 하나만 전달되면 jQuery 자체 확장
-	if (i === 길이) {
-		목표 =이;
-		나는--;
+	// Extend jQuery itself if only one argument is passed
+	if ( i === length ) {
+		target = this;
+		i--;
 	}
 
-	for (; i <길이; i ++) {
+	for ( ; i < length; i++ ) {
 
-		// 널이 아닌 / 정의되지 않은 값만 처리
-		if ((옵션 = arguments [i])! = null) {
+		// Only deal with non-null/undefined values
+		if ( ( options = arguments[ i ] ) != null ) {
 
-			// 기본 개체 확장
-			for (옵션의 이름) {
-				복사 = 옵션 [이름];
+			// Extend the base object
+			for ( name in options ) {
+				copy = options[ name ];
 
-				// Object.prototype 오염 방지
-				// 끝없는 루프 방지
-				if (name === "__proto__"|| target === copy) {
-					계속하다;
+				// Prevent Object.prototype pollution
+				// Prevent never-ending loop
+				if ( name === "__proto__" || target === copy ) {
+					continue;
 				}
 
-				// 일반 객체 또는 배열을 병합하는 경우 재귀
-				if (deep && copy && (jQuery.isPlainObject (copy) ||
-					(copyIsArray = Array.isArray (copy)))) {
-					src = 대상 [이름];
+				// Recurse if we're merging plain objects or arrays
+				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
+					( copyIsArray = Array.isArray( copy ) ) ) ) {
+					src = target[ name ];
 
-					// 소스 값에 적절한 유형을 확인합니다.
-					if (copyIsArray &&! Array.isArray (src)) {
-						클론 = [];
-					} else if (! copyIsArray &&! jQuery.isPlainObject (src)) {
-						클론 = {};
+					// Ensure proper type for the source value
+					if ( copyIsArray && !Array.isArray( src ) ) {
+						clone = [];
+					} else if ( !copyIsArray && !jQuery.isPlainObject( src ) ) {
+						clone = {};
 					} else {
-						클론 = src;
+						clone = src;
 					}
-					copyIsArray = 거짓;
+					copyIsArray = false;
 
-					// 원래 개체를 이동하지 않고 복제합니다.
-					target [이름] = jQuery.extend (deep, clone, copy);
+					// Never move original objects, clone them
+					target[ name ] = jQuery.extend( deep, clone, copy );
 
-				// 정의되지 않은 값을 가져 오지 마십시오.
-				} else if (copy! == undefined) {
-					대상 [이름] = 사본;
+				// Don't bring in undefined values
+				} else if ( copy !== undefined ) {
+					target[ name ] = copy;
 				}
 			}
 		}
 	}
 
-	// 수정 된 객체 반환
-	반환 대상;
+	// Return the modified object
+	return target;
 };
 
-jQuery.extend ({
+jQuery.extend( {
 
-	// 페이지의 각 jQuery 사본에 대해 고유함
-	expando : "jQuery"+ (version + Math.random ()) .replace (/ \ D / g, ""),
+	// Unique for each copy of jQuery on the page
+	expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
 
-	// 준비 모듈없이 jQuery가 준비되었다고 가정합니다.
-	isReady : true,
+	// Assume jQuery is ready without the ready module
+	isReady: true,
 
-	오류 : function (msg) {
-		새로운 오류 (msg);
+	error: function( msg ) {
+		throw new Error( msg );
 	},
 
-	noop : function () {},
+	noop: function() {},
 
-	isPlainObject : function (obj) {
+	isPlainObject: function( obj ) {
 		var proto, Ctor;
 
-		// 명백한 네거티브 감지
-		// jQuery.type 대신 toString을 사용하여 호스트 객체 포착
-		if (! obj || toString.call (obj)! == "[object Object]") {
-			거짓 반환;
+		// Detect obvious negatives
+		// Use toString instead of jQuery.type to catch host objects
+		if ( !obj || toString.call( obj ) !== "[object Object]" ) {
+			return false;
 		}
 
-		proto = getProto (obj);
+		proto = getProto( obj );
 
-		// 프로토 타입이없는 객체 (예 :`Object.create (null)`)는 단순합니다.
-		if (! proto) {
-			true를 반환하십시오.
+		// Objects with no prototype (e.g., `Object.create( null )`) are plain
+		if ( !proto ) {
+			return true;
 		}
 
-		// 프로토 타입이있는 객체는 전역 객체 함수에 의해 생성 된 경우 일반입니다.
-		Ctor = hasOwn.call (proto, "constructor") && proto.constructor;
-		반환 typeof Ctor === "함수"&& fnToString.call (Ctor) === ObjectFunctionString;
+		// Objects with prototype are plain iff they were constructed by a global Object function
+		Ctor = hasOwn.call( proto, "constructor" ) && proto.constructor;
+		return typeof Ctor === "function" && fnToString.call( Ctor ) === ObjectFunctionString;
 	},
 
-	isEmptyObject : function (obj) {
-		var 이름;
+	isEmptyObject: function( obj ) {
+		var name;
 
-		for (obj의 이름) {
-			거짓 반환;
+		for ( name in obj ) {
+			return false;
 		}
-		true를 반환하십시오.
+		return true;
 	},
 
-	// 제공된 컨텍스트에서 스크립트를 평가합니다. 글로벌로 폴백
-	// 지정되지 않은 경우.
-	globalEval : function (code, options, doc) {
-		DOMEval (코드, {nonce : 옵션 && options.nonce}, doc);
+	// Evaluates a script in a provided context; falls back to the global one
+	// if not specified.
+	globalEval: function( code, options, doc ) {
+		DOMEval( code, { nonce: options && options.nonce }, doc );
 	},
 
-	각각 : function (obj, callback) {
-		var 길이, i = 0;
+	each: function( obj, callback ) {
+		var length, i = 0;
 
-		if (isArrayLike (obj)) {
-			길이 = obj.length;
-			for (; i <길이; i ++) {
-				if (callback.call (obj [i], i, obj [i]) === false) {
-					단절;
+		if ( isArrayLike( obj ) ) {
+			length = obj.length;
+			for ( ; i < length; i++ ) {
+				if ( callback.call( obj[ i ], i, obj[ i ] ) === false ) {
+					break;
 				}
 			}
 		} else {
-			for (i in obj) {
-				if (callback.call (obj [i], i, obj [i]) === false) {
-					단절;
+			for ( i in obj ) {
+				if ( callback.call( obj[ i ], i, obj[ i ] ) === false ) {
+					break;
 				}
 			}
 		}
 
-		반환 obj;
+		return obj;
 	},
 
-	// 결과는 내부 용도로만 사용됩니다.
-	makeArray : function (arr, results) {
-		var ret = 결과 || [];
+	// results is for internal usage only
+	makeArray: function( arr, results ) {
+		var ret = results || [];
 
-		if (arr! = null) {
-			if (isArrayLike (Object (arr))) {
-				jQuery.merge (ret,
-					typeof arr === "문자열"?
-						[arr] : arr
+		if ( arr != null ) {
+			if ( isArrayLike( Object( arr ) ) ) {
+				jQuery.merge( ret,
+					typeof arr === "string" ?
+						[ arr ] : arr
 				);
 			} else {
-				push.call (ret, arr);
+				push.call( ret, arr );
 			}
 		}
 
-		반환 ret;
+		return ret;
 	},
 
-	inArray : function (elem, arr, i) {
-		return arr == null? -1 : indexOf.call (arr, elem, i);
+	inArray: function( elem, arr, i ) {
+		return arr == null ? -1 : indexOf.call( arr, elem, i );
 	},
 
-	// 지원 : Android <= 4.0 전용, PhantomJS 1 전용
-	// push.apply (_, arraylike)는 고대 WebKit에서 발생합니다.
-	merge : function (first, second) {
-		var len = + second.length,
+	// Support: Android <=4.0 only, PhantomJS 1 only
+	// push.apply(_, arraylike) throws on ancient WebKit
+	merge: function( first, second ) {
+		var len = +second.length,
 			j = 0,
-			i = 첫 번째 길이;
+			i = first.length;
 
-		for (; j <len; j ++) {
-			첫 번째 [i ++] = 두 번째 [j];
+		for ( ; j < len; j++ ) {
+			first[ i++ ] = second[ j ];
 		}
 
 		first.length = i;
 
-		먼저 반환;
+		return first;
 	},
 
-	grep : function (elems, callback, invert) {
+	grep: function( elems, callback, invert ) {
 		var callbackInverse,
-			일치 = [],
-			나는 = 0,
-			길이 = elems.length,
-			callbackExpect =! invert;
+			matches = [],
+			i = 0,
+			length = elems.length,
+			callbackExpect = !invert;
 
-		// 배열을 통해 항목 만 저장합니다.
-		// 유효성 검사 기능을 전달합니다.
-		for (; i <길이; i ++) {
-			callbackInverse =! callback (elems [i], i);
-			if (callbackInverse! == callbackExpect) {
-				match.push (elems [i]);
+		// Go through the array, only saving the items
+		// that pass the validator function
+		for ( ; i < length; i++ ) {
+			callbackInverse = !callback( elems[ i ], i );
+			if ( callbackInverse !== callbackExpect ) {
+				matches.push( elems[ i ] );
 			}
 		}
 
-		반환 경기;
+		return matches;
 	},
 
-	// arg는 내부 전용입니다.
-	지도 : function (elems, callback, arg) {
-		var 길이, 값,
-			나는 = 0,
+	// arg is for internal usage only
+	map: function( elems, callback, arg ) {
+		var length, value,
+			i = 0,
 			ret = [];
 
-		// 배열을 통해 각 항목을 새 값으로 변환합니다.
-		if (isArrayLike (elems)) {
-			길이 = elems.length;
-			for (; i <길이; i ++) {
-				값 = callback (elems [i], i, arg);
+		// Go through the array, translating each of the items to their new values
+		if ( isArrayLike( elems ) ) {
+			length = elems.length;
+			for ( ; i < length; i++ ) {
+				value = callback( elems[ i ], i, arg );
 
-				if (value! = null) {
-					ret.push (값);
+				if ( value != null ) {
+					ret.push( value );
 				}
 			}
 
-		// 객체의 모든 키를 통과합니다.
+		// Go through every key on the object,
 		} else {
-			for (i in elems) {
-				값 = callback (elems [i], i, arg);
+			for ( i in elems ) {
+				value = callback( elems[ i ], i, arg );
 
-				if (value! = null) {
-					ret.push (값);
+				if ( value != null ) {
+					ret.push( value );
 				}
 			}
 		}
 
-		// 중첩 된 배열을 평면화
-		return flat (ret);
+		// Flatten any nested arrays
+		return flat( ret );
 	},
 
-	// 개체에 대한 전역 GUID 카운터
-	guid : 1,
+	// A global GUID counter for objects
+	guid: 1,
 
-	// jQuery.support는 Core에서 사용되지 않지만 다른 프로젝트는
-	// 존재해야합니다.
-	지원 : 지원
-});
+	// jQuery.support is not used in Core but other projects attach their
+	// properties to it so it needs to exist.
+	support: support
+} );
 
-if (typeof Symbol === "기능") {
-	jQuery.fn [Symbol.iterator] = arr [Symbol.iterator];
+if ( typeof Symbol === "function" ) {
+	jQuery.fn[ Symbol.iterator ] = arr[ Symbol.iterator ];
 }
 
-// class2type 맵 채우기
-jQuery.each ( "부울 숫자 문자열 함수 배열 날짜 RegExp 객체 오류 기호".split ( ""),
-	function (_i, 이름) {
-		class2type [ "[객체"+ 이름 + "]"] = name.toLowerCase ();
-	});
+// Populate the class2type map
+jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
+	function( _i, name ) {
+		class2type[ "[object " + name + "]" ] = name.toLowerCase();
+	} );
 
-function isArrayLike (obj) {
+function isArrayLike( obj ) {
 
-	// 지원 : 실제 iOS 8.2 만 해당 (시뮬레이터에서 재현 할 수 없음)
-	// JIT 오류를 방지하기 위해 사용되는`in` 검사 (gh-2145)
-	// 위음성으로 인해 여기에서는 hasOwn이 사용되지 않습니다.
-	// IE의 Nodelist 길이 관련
-	var length = !! obj && "length"in obj && obj.length,
-		유형 = toType (obj);
+	// Support: real iOS 8.2 only (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = !!obj && "length" in obj && obj.length,
+		type = toType( obj );
 
-	if (isFunction (obj) || isWindow (obj)) {
-		거짓 반환;
+	if ( isFunction( obj ) || isWindow( obj ) ) {
+		return false;
 	}
 
-	반환 유형 === "배열"|| 길이 === 0 ||
-		typeof 길이 === "숫자"&& 길이> 0 && (길이-1) in obj;
+	return type === "array" || length === 0 ||
+		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
 }
 var Sizzle =
-/ *!
- * Sizzle CSS 선택기 엔진 v2.3.6
+/*!
+ * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
- * 저작권 JS 재단 및 기타 기여자
- * MIT 라이선스로 출시
+ * Copyright JS Foundation and other contributors
+ * Released under the MIT license
  * https://js.foundation/
  *
- * 날짜 : 2021-02-16
- * /
-(함수 (창) {
+ * Date: 2021-02-16
+ */
+( function( window ) {
 var i,
-	지원하다,
+	support,
 	Expr,
 	getText,
 	isXML,
-	토큰 화,
-	엮다,
-	고르다,
+	tokenize,
+	compile,
+	select,
 	outermostContext,
 	sortInput,
 	hasDuplicate,
 
-	// 로컬 문서 변수
+	// Local document vars
 	setDocument,
-	문서,
+	document,
 	docElem,
 	documentIsHTML,
 	rbuggyQSA,
 	rbuggyMatches,
-	성냥,
-	포함,
+	matches,
+	contains,
 
-	// 인스턴스 별 데이터
-	expando = "sizzle"+ 1 * new Date (),
+	// Instance-specific data
+	expando = "sizzle" + 1 * new Date(),
 	preferredDoc = window.document,
 	dirruns = 0,
-	완료 = 0,
-	classCache = createCache (),
-	tokenCache = createCache (),
-	compilerCache = createCache (),
-	nonnativeSelectorCache = createCache (),
-	sortOrder = function (a, b) {
-		if (a === b) {
+	done = 0,
+	classCache = createCache(),
+	tokenCache = createCache(),
+	compilerCache = createCache(),
+	nonnativeSelectorCache = createCache(),
+	sortOrder = function( a, b ) {
+		if ( a === b ) {
 			hasDuplicate = true;
 		}
-		반환 0;
+		return 0;
 	},
 
-	// 인스턴스 메서드
-	hasOwn = ({}) .hasOwnProperty,
+	// Instance methods
+	hasOwn = ( {} ).hasOwnProperty,
 	arr = [],
-	팝 = arr.pop,
+	pop = arr.pop,
 	pushNative = arr.push,
 	push = arr.push,
-	슬라이스 = arr.slice,
+	slice = arr.slice,
 
-	// 네이티브보다 빠르기 때문에 제거 된 indexOf를 사용합니다.
+	// Use a stripped-down indexOf as it's faster than native
 	// https://jsperf.com/thor-indexof-vs-for/5
-	indexOf = function (list, elem) {
+	indexOf = function( list, elem ) {
 		var i = 0,
 			len = list.length;
-		for (; i <len; i ++) {
-			if (list [i] === elem) {
-				반환 i;
+		for ( ; i < len; i++ ) {
+			if ( list[ i ] === elem ) {
+				return i;
 			}
 		}
-		반환 -1;
+		return -1;
 	},
 
-	booleans = "checked | selected | async | autofocus | autoplay | controls | defer | disabled | hidden |" +
-		"ismap | loop | multiple | open | readonly | 필수 | 범위 지정",
+	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|" +
+		"ismap|loop|multiple|open|readonly|required|scoped",
 
-	// 정규 표현식
+	// Regular expressions
 
 	// http://www.w3.org/TR/css3-selectors/#whitespace
-	공백 = "[\\ x20 \\ t \\ r \\ n \\ f]",
+	whitespace = "[\\x20\\t\\r\\n\\f]",
 
 	// https://www.w3.org/TR/css-syntax-3/#ident-token-diagram
-	식별자 = "(? : \\\\ [\\ da-fA-F] {1,6}"+ 공백 +
-		"? | \\\\ [^ \\ r \\ n \\ f] | [\\ w-] | [^ \ 0-\\ x7f]) +",
+	identifier = "(?:\\\\[\\da-fA-F]{1,6}" + whitespace +
+		"?|\\\\[^\\r\\n\\f]|[\\w-]|[^\0-\\x7f])+",
 
-	// 속성 선택기 : http://www.w3.org/TR/selectors/#attribute-selectors
-	속성 = "\\ ["+ 공백 + "* ("+ 식별자 + ") (?:"+ 공백 +
+	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
+	attributes = "\\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
 
-		// 연산자 (캡처 2)
-		"* ([* ^ $ |! ~]? =)"+ 공백 +
+		// Operator (capture 2)
+		"*([*^$|!~]?=)" + whitespace +
 
-		// "속성 값은 CSS 식별자 여야합니다 [캡처 5].
-		// 또는 문자열 [캡처 3 또는 캡처 4] "
-		"* (? : '((? : \\\\. | [^ \\\\']) *) '| \"((? : \\\\. | [^ \\\\\ "] ) *) \ "| ("+ 식별자 + ")) |)"+
-		공백 + "* \\]",
+		// "Attribute values must be CSS identifiers [capture 5]
+		// or strings [capture 3 or capture 4]"
+		"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" +
+		whitespace + "*\\]",
 
-	의사 = ":("+ 식별자 + ") (? : \\ (("+
+	pseudos = ":(" + identifier + ")(?:\\((" +
 
-		// preFilter에서 토큰 화가 필요한 선택기 수를 줄이려면 다음 인수를 선호합니다.
-		// 1. 인용 됨 (캡처 3, 캡처 4 또는 캡처 5)
-		"( '((? : \\\\. | [^ \\\\']) *) '| \"((? : \\\\. | [^ \\\\\ "]) *) \ ") |"+
+		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
+		// 1. quoted (capture 3; capture 4 or capture 5)
+		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
 
-		// 2. 단순 (캡처 6)
-		"((? : \\\\. | [^ \\\\ () [\\]] |"+ 속성 + ") *) |" +
+		// 2. simple (capture 6)
+		"((?:\\\\.|[^\\\\()[\\]]|" + attributes + ")*)|" +
 
-		// 3. 기타 (캡처 2)
-		". *"+
-		") \\) |)",
+		// 3. anything else (capture 2)
+		".*" +
+		")\\)|)",
 
-	// 선행 및 이스케이프되지 않은 후행 공백, 후자 앞에 오는 일부 공백이 아닌 문자 캡처
-	rwhitespace = new RegExp (whitespace + "+", "g"),
-	rtrim = new RegExp ( "^"+ 공백 + "+ | ((? : ^ | [^ \\\\]) (? : \\\\.) *)"+
-		공백 + "+ $", "g"),
+	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
+	rwhitespace = new RegExp( whitespace + "+", "g" ),
+	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" +
+		whitespace + "+$", "g" ),
 
-	rcomma = new RegExp ( "^"+ 공백 + "*,"+ 공백 + "*"),
-	rcombinators = new RegExp ( "^"+ whitespace + "* ([> + ~] |"+ whitespace + ")"+ whitespace +
-		"*"),
-	rdescend = new RegExp (whitespace + "|>"),
+	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
+	rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace +
+		"*" ),
+	rdescend = new RegExp( whitespace + "|>" ),
 
-	rpseudo = new RegExp (pseudos),
-	ridentifier = new RegExp ( "^"+ identifier + "$"),
+	rpseudo = new RegExp( pseudos ),
+	ridentifier = new RegExp( "^" + identifier + "$" ),
 
 	matchExpr = {
-		"ID": 새 RegExp ( "^ # ("+ 식별자 + ")"),
-		"CLASS": 새 RegExp ( "^ \\. ("+ 식별자 + ")"),
-		"TAG": 새 RegExp ( "^ ("+ 식별자 + "| [*])"),
-		"ATTR": 새로운 RegExp ( "^"+ 속성),
-		"PSEUDO": 새로운 RegExp ( "^"+ pseudos),
-		"CHILD": new RegExp ( "^ :( only | first | last | nth | nth-last)-(child | of-type) (? : \\ ("+
-			공백 + "* (짝수 | 홀수 | (([+-] |) (\\ d *) n |)"+ 공백 + "* (? : ([+-] |)"+
-			공백 + "* (\\ d +) |))"+ 공백 + "* \\) |)", "i"),
-		"bool": new RegExp ( "^ (?:"+ 부울 + ") $", "i"),
+		"ID": new RegExp( "^#(" + identifier + ")" ),
+		"CLASS": new RegExp( "^\\.(" + identifier + ")" ),
+		"TAG": new RegExp( "^(" + identifier + "|[*])" ),
+		"ATTR": new RegExp( "^" + attributes ),
+		"PSEUDO": new RegExp( "^" + pseudos ),
+		"CHILD": new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" +
+			whitespace + "*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" +
+			whitespace + "*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
+		"bool": new RegExp( "^(?:" + booleans + ")$", "i" ),
 
-		// .is ()를 구현하는 라이브러리에서 사용
-		//`select`에서 POS 매칭에 사용합니다.
-		"needsContext": new RegExp ( "^"+ 공백 +
-			"* [> + ~] | :( 짝수 | 홀수 | eq | gt | lt | nth | first | last) (? : \\ ("+ 공백 +
-			"* ((? :-\\ d)? \\ d *)"+ 공백 + "* \\) |) (? = [^-] | $)", "i")
+		// For use in libraries implementing .is()
+		// We use this for POS matching in `select`
+		"needsContext": new RegExp( "^" + whitespace +
+			"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" + whitespace +
+			"*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
 	},
 
-	rhtml = / HTML $ / i,
-	rinputs = / ^ (?: input | select | textarea | button) $ / i,
-	rheader = / ^ h \ d $ / i,
+	rhtml = /HTML$/i,
+	rinputs = /^(?:input|select|textarea|button)$/i,
+	rheader = /^h\d$/i,
 
-	rnative = / ^ [^ {] + \ {\ s * \ [네이티브 \ w /,
+	rnative = /^[^{]+\{\s*\[native \w/,
 
-	// 쉽게 구문 분석 / 검색 가능한 ID 또는 TAG 또는 CLASS 선택자
+	// Easily-parseable/retrievable ID or TAG or CLASS selectors
 	rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
 
-	rsibling = / [+ ~] /,
+	rsibling = /[+~]/,
 
-	// CSS 이스케이프
+	// CSS escapes
 	// http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
-	runescape = new RegExp ( "\\\\ [\\ da-fA-F] {1,6}"+ 공백 + "? | \\\\ ([^ \\ r \\ n \\ f])" , "g"),
-	funescape = function (escape, nonHex) {
-		var high = "0x"+ escape.slice (1)-0x10000;
+	runescape = new RegExp( "\\\\[\\da-fA-F]{1,6}" + whitespace + "?|\\\\([^\\r\\n\\f])", "g" ),
+	funescape = function( escape, nonHex ) {
+		var high = "0x" + escape.slice( 1 ) - 0x10000;
 
-		nonHex를 반환합니까?
+		return nonHex ?
 
-			// 16 진수가 아닌 이스케이프 시퀀스에서 백 슬래시 접두사를 제거합니다.
+			// Strip the backslash prefix from a non-hex escape sequence
 			nonHex :
 
-			// 16 진수 이스케이프 시퀀스를 인코딩 된 유니 코드 코드 포인트로 바꿉니다.
-			// 지원 : IE <= 11 +
-			// BMP (Basic Multilingual Plane) 외부의 값의 경우 수동으로
-			// 서로 게이트 쌍
-			높음 <0?
-				String.fromCharCode (high + 0x10000) :
-				String.fromCharCode (높음 >> 10 | 0xD800, 높음 & 0x3FF | 0xDC00);
+			// Replace a hexadecimal escape sequence with the encoded Unicode code point
+			// Support: IE <=11+
+			// For values outside the Basic Multilingual Plane (BMP), manually construct a
+			// surrogate pair
+			high < 0 ?
+				String.fromCharCode( high + 0x10000 ) :
+				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
 	},
 
-	// CSS 문자열 / 식별자 직렬화
+	// CSS string/identifier serialization
 	// https://drafts.csswg.org/cssom/#common-serializing-idioms
-	rcssescape = / ([\ 0- \ x1f \ x7f] | ^-? \ d) | ^-$ | [^ \ 0- \ x1f \ x7f- \ uFFFF \ w-] / g,
-	fcssescape = function (ch, asCodePoint) {
-		if (asCodePoint) {
+	rcssescape = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g,
+	fcssescape = function( ch, asCodePoint ) {
+		if ( asCodePoint ) {
 
-			// U + 0000 NULL은 U + FFFD REPLACEMENT CHARACTER가됩니다.
-			if (ch === "\ 0") {
-				return "\ uFFFD";
+			// U+0000 NULL becomes U+FFFD REPLACEMENT CHARACTER
+			if ( ch === "\0" ) {
+				return "\uFFFD";
 			}
 
-			// 제어 문자와 (위치에 따라 다름) 숫자는 코드 포인트로 이스케이프됩니다.
-			return ch.slice (0, -1) + "\\"+
-				ch.charCodeAt (ch.length-1) .toString (16) + "";
+			// Control characters and (dependent upon position) numbers get escaped as code points
+			return ch.slice( 0, -1 ) + "\\" +
+				ch.charCodeAt( ch.length - 1 ).toString( 16 ) + " ";
 		}
 
-		// 기타 잠재적으로 특수한 ASCII 문자는 백 슬래시 이스케이프 처리됩니다.
-		return "\\"+ ch;
+		// Other potentially-special ASCII characters get backslash-escaped
+		return "\\" + ch;
 	},
 
-	// iframe에 사용
-	// setDocument () 참조
-	// 함수 래퍼를 제거하면 "Permission Denied"가 발생합니다.
-	// IE의 오류
-	unloadHandler = function () {
-		setDocument ();
+	// Used for iframes
+	// See setDocument()
+	// Removing the function wrapper causes a "Permission Denied"
+	// error in IE
+	unloadHandler = function() {
+		setDocument();
 	},
 
-	inDisabledFieldset = addCombinator (
-		function (elem) {
-			return elem.disabled === true && elem.nodeName.toLowerCase () === "fieldset";
+	inDisabledFieldset = addCombinator(
+		function( elem ) {
+			return elem.disabled === true && elem.nodeName.toLowerCase() === "fieldset";
 		},
-		{dir : "parentNode", 다음 : "legend"}
+		{ dir: "parentNode", next: "legend" }
 	);
 
-// push.apply (_, NodeList) 최적화
-{
-	push.apply (
-		(arr = slice.call (preferredDoc.childNodes)),
+// Optimize for push.apply( _, NodeList )
+try {
+	push.apply(
+		( arr = slice.call( preferredDoc.childNodes ) ),
 		preferredDoc.childNodes
 	);
 
-	// 지원 : Android <4.0
-	// 자동으로 실패하는 push.apply 감지
+	// Support: Android<4.0
+	// Detect silently failing push.apply
 	// eslint-disable-next-line no-unused-expressions
-	arr [preferredDoc.childNodes.length] .nodeType;
-} catch (e) {
-	push = {적용 : arr.length?
+	arr[ preferredDoc.childNodes.length ].nodeType;
+} catch ( e ) {
+	push = { apply: arr.length ?
 
-		// 가능하면 슬라이스 활용
-		function (target, els) {
-			pushNative.apply (target, slice.call (els));
+		// Leverage slice if possible
+		function( target, els ) {
+			pushNative.apply( target, slice.call( els ) );
 		} :
 
-		// 지원 : IE <9
-		// 그렇지 않으면 직접 추가
-		function (target, els) {
+		// Support: IE<9
+		// Otherwise append directly
+		function( target, els ) {
 			var j = target.length,
-				나는 = 0;
+				i = 0;
 
-			// NodeList.length를 신뢰할 수 없습니다.
-			while ((target [j ++] = els [i ++])) {}
-			target.length = j-1;
+			// Can't trust NodeList.length
+			while ( ( target[ j++ ] = els[ i++ ] ) ) {}
+			target.length = j - 1;
 		}
 	};
 }
 
-function Sizzle (selector, context, results, seed) {
+function Sizzle( selector, context, results, seed ) {
 	var m, i, elem, nid, match, groups, newSelector,
-		newContext = 컨텍스트 && context.ownerDocument,
+		newContext = context && context.ownerDocument,
 
-		// 컨텍스트가 문서로 기본 설정되므로 nodeType은 기본적으로 9로 설정됩니다.
-		nodeType = 컨텍스트? context.nodeType : 9;
+		// nodeType defaults to 9, since context defaults to document
+		nodeType = context ? context.nodeType : 9;
 
-	결과 = 결과 || [];
+	results = results || [];
 
-	// 잘못된 선택기 또는 컨텍스트가있는 호출에서 일찍 반환
-	if (typeof selector! == "string"||! selector ||
-		nodeType! == 1 && nodeType! == 9 && nodeType! == 11) {
+	// Return early from calls with invalid selector or context
+	if ( typeof selector !== "string" || !selector ||
+		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
 
-		반환 결과;
+		return results;
 	}
 
-	// HTML 문서에서 바로 가기 찾기 작업 (필터와 반대)을 시도합니다.
-	if (! seed) {
-		setDocument (컨텍스트);
-		문맥 = 문맥 || 문서;
+	// Try to shortcut find operations (as opposed to filters) in HTML documents
+	if ( !seed ) {
+		setDocument( context );
+		context = context || document;
 
-		if (documentIsHTML) {
+		if ( documentIsHTML ) {
 
-			// 선택기가 충분히 간단한 경우 "get * By *"DOM 메소드를 사용해보십시오.
-			// (메서드가 존재하지 않는 DocumentFragment 컨텍스트 제외)
-			if (nodeType! == 11 && (match = rquickExpr.exec (selector))) {
+			// If the selector is sufficiently simple, try using a "get*By*" DOM method
+			// (excepting DocumentFragment context, where the methods don't exist)
+			if ( nodeType !== 11 && ( match = rquickExpr.exec( selector ) ) ) {
 
-				// ID 선택기
-				if ((m = match [1])) {
+				// ID selector
+				if ( ( m = match[ 1 ] ) ) {
 
-					// 문서 컨텍스트
-					if (nodeType === 9) {
-						if ((elem = context.getElementById (m))) {
+					// Document context
+					if ( nodeType === 9 ) {
+						if ( ( elem = context.getElementById( m ) ) ) {
 
-							// 지원 : IE, Opera, Webkit
-							// TODO : 버전 식별
-							// getElementById는 ID 대신 이름으로 요소를 일치시킬 수 있습니다.
-							if (elem.id === m) {
-								results.push (elem);
-								반환 결과;
+							// Support: IE, Opera, Webkit
+							// TODO: identify versions
+							// getElementById can match elements by name instead of ID
+							if ( elem.id === m ) {
+								results.push( elem );
+								return results;
 							}
 						} else {
-							반환 결과;
+							return results;
 						}
 
-					// 요소 컨텍스트
+					// Element context
 					} else {
 
-						// 지원 : IE, Opera, Webkit
-						// TODO : 버전 식별
-						// getElementById는 ID 대신 이름으로 요소를 일치시킬 수 있습니다.
-						if (newContext && (elem = newContext.getElementById (m)) &&
-							포함 (context, elem) &&
-							elem.id === m) {
+						// Support: IE, Opera, Webkit
+						// TODO: identify versions
+						// getElementById can match elements by name instead of ID
+						if ( newContext && ( elem = newContext.getElementById( m ) ) &&
+							contains( context, elem ) &&
+							elem.id === m ) {
 
-							results.push (elem);
-							반환 결과;
+							results.push( elem );
+							return results;
 						}
 					}
 
-				// 유형 선택기
-				} else if (match [2]) {
-					push.apply (results, context.getElementsByTagName (selector));
-					반환 결과;
+				// Type selector
+				} else if ( match[ 2 ] ) {
+					push.apply( results, context.getElementsByTagName( selector ) );
+					return results;
 
-				// 클래스 선택기
-				} else if ((m = match [3]) && support.getElementsByClassName &&
-					context.getElementsByClassName) {
+				// Class selector
+				} else if ( ( m = match[ 3 ] ) && support.getElementsByClassName &&
+					context.getElementsByClassName ) {
 
-					push.apply (results, context.getElementsByClassName (m));
-					반환 결과;
+					push.apply( results, context.getElementsByClassName( m ) );
+					return results;
 				}
 			}
 
-			// querySelectorAll 활용
-			if (support.qsa &&
-				! nonnativeSelectorCache [선택자 + ""] &&
-				(! rbuggyQSA ||! rbuggyQSA.test (선택자)) &&
+			// Take advantage of querySelectorAll
+			if ( support.qsa &&
+				!nonnativeSelectorCache[ selector + " " ] &&
+				( !rbuggyQSA || !rbuggyQSA.test( selector ) ) &&
 
-				// 지원 : IE 8 만
-				// 개체 요소 제외
-				(nodeType! == 1 || context.nodeName.toLowerCase ()! == "object")) {
+				// Support: IE 8 only
+				// Exclude object elements
+				( nodeType !== 1 || context.nodeName.toLowerCase() !== "object" ) ) {
 
-				newSelector = 선택자;
-				newContext = 컨텍스트;
+				newSelector = selector;
+				newContext = context;
 
-				// qSA는 자식을 평가할 때 범위 지정 루트 외부의 요소를 고려합니다.
-				// 우리가 원하는 것이 아닙니다.
-				// 이러한 경우에는 모든 선택기 앞에
-				// 범위 컨텍스트를 참조하는 ID 선택기가있는 목록입니다.
-				// 선행 결합자를 사용할 때도 기술을 사용해야합니다.
-				// 이러한 선택자는 querySelectorAll에 의해 인식되지 않습니다.
-				//이 기술에 대해 Andrew Dupont에게 감사드립니다.
-				if (nodeType === 1 &&
-					(rdescend.test (선택자) || rcombinators.test (선택자))) {
+				// qSA considers elements outside a scoping root when evaluating child or
+				// descendant combinators, which is not what we want.
+				// In such cases, we work around the behavior by prefixing every selector in the
+				// list with an ID selector referencing the scope context.
+				// The technique has to be used as well when a leading combinator is used
+				// as such selectors are not recognized by querySelectorAll.
+				// Thanks to Andrew Dupont for this technique.
+				if ( nodeType === 1 &&
+					( rdescend.test( selector ) || rcombinators.test( selector ) ) ) {
 
-					// 형제 선택자에 대한 컨텍스트 확장
-					newContext = rsibling.test (선택자) && testContext (context.parentNode) ||
-						문맥;
+					// Expand context for sibling selectors
+					newContext = rsibling.test( selector ) && testContext( context.parentNode ) ||
+						context;
 
-					// 브라우저가 다음과 같은 경우 ID 해킹 대신 : scope를 사용할 수 있습니다.
-					// 지원하고 컨텍스트를 변경하지 않는 경우.
-					if (newContext! == context ||! support.scope) {
+					// We can use :scope instead of the ID hack if the browser
+					// supports it & if we're not changing the context.
+					if ( newContext !== context || !support.scope ) {
 
-						// 컨텍스트 ID를 캡처하고 필요한 경우 먼저 설정합니다.
-						if ((nid = context.getAttribute ( "id"))) {
-							nid = nid.replace (rcssescape, fcssescape);
+						// Capture the context ID, setting it first if necessary
+						if ( ( nid = context.getAttribute( "id" ) ) ) {
+							nid = nid.replace( rcssescape, fcssescape );
 						} else {
-							context.setAttribute ( "id", (nid = expando));
+							context.setAttribute( "id", ( nid = expando ) );
 						}
 					}
 
-					// 목록의 모든 선택기 접두사
-					그룹 = tokenize (선택자);
-					i = 그룹 길이;
-					while (i--) {
-						그룹 [i] = (nid? "#"+ nid : ": scope") + ""+
-							toSelector (그룹 [i]);
+					// Prefix every selector in the list
+					groups = tokenize( selector );
+					i = groups.length;
+					while ( i-- ) {
+						groups[ i ] = ( nid ? "#" + nid : ":scope" ) + " " +
+							toSelector( groups[ i ] );
 					}
-					newSelector = groups.join ( ",");
+					newSelector = groups.join( "," );
 				}
 
-				{
-					push.apply (결과,
-						newContext.querySelectorAll (newSelector)
+				try {
+					push.apply( results,
+						newContext.querySelectorAll( newSelector )
 					);
-					반환 결과;
-				} catch (qsaError) {
-					nonnativeSelectorCache (selector, true);
-				} 드디어 {
-					if (nid === expando) {
-						context.removeAttribute ( "id");
+					return results;
+				} catch ( qsaError ) {
+					nonnativeSelectorCache( selector, true );
+				} finally {
+					if ( nid === expando ) {
+						context.removeAttribute( "id" );
 					}
 				}
 			}
 		}
 	}
 
-	// 다른 모든
-	return select (selector.replace (rtrim, "$ 1"), context, results, seed);
+	// All others
+	return select( selector.replace( rtrim, "$1" ), context, results, seed );
 }
 
-/ **
- * 제한된 크기의 키-값 캐시 만들기
- * @returns {function (string, object)} 객체 데이터를 자체적으로 저장 한 후 반환합니다.
- * 속성 이름 (공백이 붙은) 문자열 및 (캐시가 Expr.cacheLength보다 큰 경우)
- * 가장 오래된 항목 삭제
- * /
-function createCache () {
+/**
+ * Create key-value caches of limited size
+ * @returns {function(string, object)} Returns the Object data after storing it on itself with
+ *	property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
+ *	deleting the oldest entry
+ */
+function createCache() {
 	var keys = [];
 
-	function cache (key, value) {
+	function cache( key, value ) {
 
-		// 기본 프로토 타입 속성과의 충돌을 방지하려면 (key + "") 사용 (문제 # 157 참조)
-		if (keys.push (key + "")> Expr.cacheLength) {
+		// Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
+		if ( keys.push( key + " " ) > Expr.cacheLength ) {
 
-			// 가장 최근 항목 만 유지
-			캐시 삭제 [keys.shift ()];
+			// Only keep the most recent entries
+			delete cache[ keys.shift() ];
 		}
-		return (cache [key + ""] = value);
+		return ( cache[ key + " " ] = value );
 	}
-	반환 캐시;
+	return cache;
 }
 
-/ **
- * Sizzle에서 특별히 사용하도록 기능 표시
- * @param {Function} fn 표시 할 함수
- * /
-function markFunction (fn) {
-	fn [expando] = true;
-	반환 fn;
+/**
+ * Mark a function for special use by Sizzle
+ * @param {Function} fn The function to mark
+ */
+function markFunction( fn ) {
+	fn[ expando ] = true;
+	return fn;
 }
 
-/ **
- * 요소를 사용한 테스트 지원
- * @param {Function} fn 생성 된 요소를 전달하고 부울 결과를 반환합니다.
- * /
-function assert (fn) {
-	var el = document.createElement ( "fieldset");
+/**
+ * Support testing using an element
+ * @param {Function} fn Passed the created element and returns a boolean result
+ */
+function assert( fn ) {
+	var el = document.createElement( "fieldset" );
 
-	{
-		return !! fn (el);
-	} catch (e) {
-		거짓 반환;
-	} 드디어 {
+	try {
+		return !!fn( el );
+	} catch ( e ) {
+		return false;
+	} finally {
 
-		// 기본적으로 부모에서 제거
-		if (el.parentNode) {
-			el.parentNode.removeChild (el);
+		// Remove from its parent by default
+		if ( el.parentNode ) {
+			el.parentNode.removeChild( el );
 		}
 
-		// IE에서 메모리 해제
+		// release memory in IE
 		el = null;
 	}
 }
 
-/ **
- * 지정된 모든 속성에 대해 동일한 처리기를 추가합니다.
- * @param {String} attrs 파이프로 구분 된 속성 목록
- * @param {Function} 핸들러 적용 할 메소드
- * /
-function addHandle (attrs, handler) {
-	var arr = attrs.split ( "|"),
-		i = arr. 길이;
+/**
+ * Adds the same handler for all of the specified attrs
+ * @param {String} attrs Pipe-separated list of attributes
+ * @param {Function} handler The method that will be applied
+ */
+function addHandle( attrs, handler ) {
+	var arr = attrs.split( "|" ),
+		i = arr.length;
 
-	while (i--) {
-		Expr.attrHandle [arr [i]] = 핸들러;
+	while ( i-- ) {
+		Expr.attrHandle[ arr[ i ] ] = handler;
 	}
 }
 
-/ **
- * 두 형제의 문서 순서 확인
- * @param {요소} a
- * @param {요소} b
- * @returns {Number} a가 b 앞에 오면 0보다 작고, a가 b 뒤에 있으면 0보다 큽니다.
- * /
-function siblingCheck (a, b) {
+/**
+ * Checks document order of two siblings
+ * @param {Element} a
+ * @param {Element} b
+ * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
+ */
+function siblingCheck( a, b ) {
 	var cur = b && a,
-		diff = 현재 && a.nodeType === 1 && b.nodeType === 1 &&
-			a.sourceIndex-b.sourceIndex;
+		diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
+			a.sourceIndex - b.sourceIndex;
 
-	// 두 노드 모두에서 사용 가능한 경우 IE sourceIndex 사용
-	if (diff) {
+	// Use IE sourceIndex if available on both nodes
+	if ( diff ) {
 		return diff;
 	}
 
-	// b가 a를 따르는 지 확인
-	if (cur) {
-		while ((cur = cur.nextSibling)) {
-			if (cur === b) {
-				반환 -1;
+	// Check if b follows a
+	if ( cur ) {
+		while ( ( cur = cur.nextSibling ) ) {
+			if ( cur === b ) {
+				return -1;
 			}
 		}
 	}
 
-	반환? 1 : -1;
+	return a ? 1 : -1;
 }
 
-/ **
- * 입력 유형에 대해 의사에서 사용할 함수를 반환합니다.
- * @param {String} 유형
- * /
-function createInputPseudo (type) {
-	return function (elem) {
-		var name = elem.nodeName.toLowerCase ();
-		반환 이름 === "입력"&& elem.type === type;
+/**
+ * Returns a function to use in pseudos for input types
+ * @param {String} type
+ */
+function createInputPseudo( type ) {
+	return function( elem ) {
+		var name = elem.nodeName.toLowerCase();
+		return name === "input" && elem.type === type;
 	};
 }
 
-/ **
- * 버튼의 의사에서 사용할 함수를 반환합니다.
- * @param {String} 유형
- * /
-function createButtonPseudo (type) {
-	return function (elem) {
-		var name = elem.nodeName.toLowerCase ();
-		return (name === "input"|| name === "button") && elem.type === type;
+/**
+ * Returns a function to use in pseudos for buttons
+ * @param {String} type
+ */
+function createButtonPseudo( type ) {
+	return function( elem ) {
+		var name = elem.nodeName.toLowerCase();
+		return ( name === "input" || name === "button" ) && elem.type === type;
 	};
 }
 
-/ **
- * : enabled / : disabled에 대해 의사에서 사용할 함수를 반환합니다.
- * @param {Boolean} 비활성화 : disabled에 대해 true; false for : enabled
- * /
-function createDisabledPseudo (disabled) {
+/**
+ * Returns a function to use in pseudos for :enabled/:disabled
+ * @param {Boolean} disabled true for :disabled; false for :enabled
+ */
+function createDisabledPseudo( disabled ) {
 
-	// 알려진 : disabled false positives : fieldset [disabled]> legend : nth-of-type (n + 2) : can-disable
-	return function (elem) {
+	// Known :disabled false positives: fieldset[disabled] > legend:nth-of-type(n+2) :can-disable
+	return function( elem ) {
 
-		// 특정 요소 만 : enabled 또는 : disabled와 일치 할 수 있습니다.
+		// Only certain elements can match :enabled or :disabled
 		// https://html.spec.whatwg.org/multipage/scripting.html#selector-enabled
 		// https://html.spec.whatwg.org/multipage/scripting.html#selector-disabled
-		if ( "form"in elem) {
+		if ( "form" in elem ) {
 
-			// 비활성화되지 않은 관련 요소에서 상속 된 비활성화 여부를 확인합니다.
-			// * 비활성화 된 필드 셋에 나열된 양식 관련 요소
-			// https://html.spec.whatwg.org/multipage/forms.html#category-listed
-			// https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
-			// * 비활성화 된 optgroup의 옵션 요소
-			// https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
-			// 이러한 모든 요소에는 "form"속성이 있습니다.
-			if (elem.parentNode && elem.disabled === false) {
+			// Check for inherited disabledness on relevant non-disabled elements:
+			// * listed form-associated elements in a disabled fieldset
+			//   https://html.spec.whatwg.org/multipage/forms.html#category-listed
+			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
+			// * option elements in a disabled optgroup
+			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
+			// All such elements have a "form" property.
+			if ( elem.parentNode && elem.disabled === false ) {
 
-				// 옵션 요소가있는 경우 상위 optgroup으로 연기
-				if (elem의 "label") {
-					if (elem.parentNode의 "label") {
-						return elem.parentNode.disabled === 비활성화 됨;
+				// Option elements defer to a parent optgroup if present
+				if ( "label" in elem ) {
+					if ( "label" in elem.parentNode ) {
+						return elem.parentNode.disabled === disabled;
 					} else {
-						return elem.disabled === 비활성화 됨;
+						return elem.disabled === disabled;
 					}
 				}
 
-				// 지원 : IE 6-11
-				// isDisabled 바로 가기 속성을 사용하여 비활성화 된 필드 셋 조상을 확인합니다.
-				return elem.isDisabled === 비활성화 ||
+				// Support: IE 6 - 11
+				// Use the isDisabled shortcut property to check for disabled fieldset ancestors
+				return elem.isDisabled === disabled ||
 
-					// isDisabled가없는 경우 수동으로 확인합니다.
-					/ * jshint -W018 * /
-					elem.isDisabled! ==! disabled &&
-					inDisabledFieldset (elem) === 비활성화 됨;
+					// Where there is no isDisabled, check manually
+					/* jshint -W018 */
+					elem.isDisabled !== !disabled &&
+					inDisabledFieldset( elem ) === disabled;
 			}
 
-			return elem.disabled === 비활성화 됨;
+			return elem.disabled === disabled;
 
-		// disabled 속성을 신뢰하기 전에 비활성화 할 수없는 요소를 찾아 내십시오.
-		// 일부 희생자들은 우리의 그물 (라벨, 범례, 메뉴, 트랙)에 걸리지 만,
-		// 부울 값은 고사하고 그들 위에 존재합니다.
-		} else if ( "label"in elem) {
-			return elem.disabled === 비활성화 됨;
+		// Try to winnow out elements that can't be disabled before trusting the disabled property.
+		// Some victims get caught in our net (label, legend, menu, track), but it shouldn't
+		// even exist on them, let alone have a boolean value.
+		} else if ( "label" in elem ) {
+			return elem.disabled === disabled;
 		}
 
-		// 나머지 요소는 : enabled도 : disabled도 아닙니다.
-		거짓 반환;
+		// Remaining elements are neither :enabled nor :disabled
+		return false;
 	};
 }
 
-/ **
- * 위치에 대한 의사에서 사용할 함수를 반환합니다.
- * @param {기능} fn
- * /
-function createPositionalPseudo (fn) {
-	return markFunction (function (argument) {
-		인수 = + 인수;
-		return markFunction (function (seed, matches) {
+/**
+ * Returns a function to use in pseudos for positionals
+ * @param {Function} fn
+ */
+function createPositionalPseudo( fn ) {
+	return markFunction( function( argument ) {
+		argument = +argument;
+		return markFunction( function( seed, matches ) {
 			var j,
-				matchIndexes = fn ([], seed.length, 인수),
+				matchIndexes = fn( [], seed.length, argument ),
 				i = matchIndexes.length;
 
-			// 지정된 인덱스에서 찾은 요소 일치
-			while (i--) {
-				if (seed [(j = matchIndexes [i])]) {
-					seed [j] =! (match [j] = seed [j]);
+			// Match elements found at the specified indexes
+			while ( i-- ) {
+				if ( seed[ ( j = matchIndexes[ i ] ) ] ) {
+					seed[ j ] = !( matches[ j ] = seed[ j ] );
 				}
 			}
-		});
-	});
+		} );
+	} );
 }
 
-/ **
- * 노드의 유효성을 Sizzle 컨텍스트로 확인합니다.
- * @param {Element | Object =} 컨텍스트
- * @returns {Element | Object | Boolean} 허용되는 경우 입력 노드, 그렇지 않으면 잘못된 값
- * /
-function testContext (context) {
-	return context && typeof context.getElementsByTagName! == "undefined"&& context;
+/**
+ * Checks a node for validity as a Sizzle context
+ * @param {Element|Object=} context
+ * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
+ */
+function testContext( context ) {
+	return context && typeof context.getElementsByTagName !== "undefined" && context;
 }
 
-// 편의를 위해 지원 변수 노출
-지원 = Sizzle.support = {};
+// Expose support vars for convenience
+support = Sizzle.support = {};
 
-/ **
- * XML 노드 감지
- * @param {Element | Object} elem 요소 또는 문서
- * @returns {Boolean} elem이 HTML이 아닌 XML 노드 인 경우 True
- * /
-isXML = Sizzle.isXML = function (elem) {
-	var 네임 스페이스 = elem && elem.namespaceURI,
-		docElem = elem && (elem.ownerDocument || elem) .documentElement;
+/**
+ * Detects XML nodes
+ * @param {Element|Object} elem An element or a document
+ * @returns {Boolean} True iff elem is a non-HTML XML node
+ */
+isXML = Sizzle.isXML = function( elem ) {
+	var namespace = elem && elem.namespaceURI,
+		docElem = elem && ( elem.ownerDocument || elem ).documentElement;
 
-	// 지원 : IE <= 8
-	// iframe 로딩과 같이 documentElement가 아직 존재하지 않을 때 HTML을 가정합니다.
+	// Support: IE <=8
+	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
 	// https://bugs.jquery.com/ticket/4833
-	return! rhtml.test (namespace || docElem && docElem.nodeName || "HTML");
+	return !rhtml.test( namespace || docElem && docElem.nodeName || "HTML" );
 };
 
-/ **
- * 현재 문서를 기준으로 문서 관련 변수를 한 번 설정
- * @param {Element | Object} [doc] 문서를 설정하는 데 사용할 요소 또는 문서 객체
- * @returns {Object} 현재 문서를 반환합니다.
- * /
-setDocument = Sizzle.setDocument = function (node) {
+/**
+ * Sets document-related variables once based on the current document
+ * @param {Element|Object} [doc] An element or document object to use to set the document
+ * @returns {Object} Returns the current document
+ */
+setDocument = Sizzle.setDocument = function( node ) {
 	var hasCompare, subWindow,
-		doc = 노드? node.ownerDocument || 노드 : preferredDoc;
+		doc = node ? node.ownerDocument || node : preferredDoc;
 
-	// 문서가 유효하지 않거나 이미 선택된 경우 일찍 반환
-	// 지원 : IE 11+, Edge 17-18+
-	// IE / Edge는 엄격한 비교시 때때로 "Permission denied"오류를 발생시킵니다.
-	// 두 개의 문서; 얕은 비교가 작동합니다.
+	// Return early if doc is invalid or already selected
+	// Support: IE 11+, Edge 17 - 18+
+	// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
+	// two documents; shallow comparisons work.
 	// eslint-disable-next-line eqeqeq
-	if (doc == 문서 || doc.nodeType! == 9 ||! doc.documentElement) {
-		반환 문서;
+	if ( doc == document || doc.nodeType !== 9 || !doc.documentElement ) {
+		return document;
 	}
 
-	// 전역 변수 업데이트
-	문서 = 문서;
+	// Update global variables
+	document = doc;
 	docElem = document.documentElement;
-	documentIsHTML =! isXML (문서);
+	documentIsHTML = !isXML( document );
 
-	// 지원 : IE 9-11 +, Edge 12-18 +
-	// 언로드 후 iframe 문서에 액세스하면 "permission denied"오류가 발생합니다 (jQuery # 13936).
-	// 지원 : IE 11+, Edge 17-18+
-	// IE / Edge는 엄격한 비교시 때때로 "Permission denied"오류를 발생시킵니다.
-	// 두 개의 문서; 얕은 비교가 작동합니다.
+	// Support: IE 9 - 11+, Edge 12 - 18+
+	// Accessing iframe documents after unload throws "permission denied" errors (jQuery #13936)
+	// Support: IE 11+, Edge 17 - 18+
+	// IE/Edge sometimes throw a "Permission denied" error when strict-comparing
+	// two documents; shallow comparisons work.
 	// eslint-disable-next-line eqeqeq
-	if (preferredDoc! = 문서 &&
-		(subWindow = document.defaultView) && subWindow.top! == subWindow) {
+	if ( preferredDoc != document &&
+		( subWindow = document.defaultView ) && subWindow.top !== subWindow ) {
 
-		// 지원 : IE 11, Edge
-		if (subWindow.addEventListener) {
-			subWindow.addEventListener ( "unload", unloadHandler, false);
+		// Support: IE 11, Edge
+		if ( subWindow.addEventListener ) {
+			subWindow.addEventListener( "unload", unloadHandler, false );
 
-		// 지원 : IE 9-10 만
-		} else if (subWindow.attachEvent) {
-			subWindow.attachEvent ( "onunload", unloadHandler);
+		// Support: IE 9 - 10 only
+		} else if ( subWindow.attachEvent ) {
+			subWindow.attachEvent( "onunload", unloadHandler );
 		}
 	}
 
-	// 지원 : IE 8-11 +, Edge 12-18 +, Chrome <= 16-25 만, Firefox <= 3.6-31 만,
-	// Safari 4-5 전용, Opera <= 11.6-12.x 전용
-	// IE / Edge 및 이전 브라우저는 : scope 의사 클래스를 지원하지 않습니다.
-	// 지원 : Safari 6.0 만
-	// Safari 6.0은 : scope를 지원하지만 거기에는 : root의 별칭입니다.
-	support.scope = assert (function (el) {
-		docElem.appendChild (el) .appendChild (document.createElement ( "div"));
-		return typeof el.querySelectorAll! == "정의되지 않음"&&
-			! el.querySelectorAll ( ": scope fieldset div") .length;
-	});
+	// Support: IE 8 - 11+, Edge 12 - 18+, Chrome <=16 - 25 only, Firefox <=3.6 - 31 only,
+	// Safari 4 - 5 only, Opera <=11.6 - 12.x only
+	// IE/Edge & older browsers don't support the :scope pseudo-class.
+	// Support: Safari 6.0 only
+	// Safari 6.0 supports :scope but it's an alias of :root there.
+	support.scope = assert( function( el ) {
+		docElem.appendChild( el ).appendChild( document.createElement( "div" ) );
+		return typeof el.querySelectorAll !== "undefined" &&
+			!el.querySelectorAll( ":scope fieldset div" ).length;
+	} );
 
-	/ * 속성
-	-------------------------------------------------- -------------------- * /
+	/* Attributes
+	---------------------------------------------------------------------- */
 
-	// 지원 : IE <8
-	// getAttribute가 실제로 속성이 아닌 속성을 반환하는지 확인
-	// (IE8 부울 제외)
-	support.attributes = assert (function (el) {
+	// Support: IE<8
+	// Verify that getAttribute really returns attributes and not properties
+	// (excepting IE8 booleans)
+	support.attributes = assert( function( el ) {
 		el.className = "i";
-		return! el.getAttribute ( "className");
-	});
+		return !el.getAttribute( "className" );
+	} );
 
-	/ * getElement (s) By *
-	-------------------------------------------------- -------------------- * /
+	/* getElement(s)By*
+	---------------------------------------------------------------------- */
 
-	// getElementsByTagName ( "*")이 요소 만 반환하는지 확인
-	support.getElementsByTagName = assert (function (el) {
-		el.appendChild (document.createComment ( ""));
-		return! el.getElementsByTagName ( "*") .length;
-	});
+	// Check if getElementsByTagName("*") returns only elements
+	support.getElementsByTagName = assert( function( el ) {
+		el.appendChild( document.createComment( "" ) );
+		return !el.getElementsByTagName( "*" ).length;
+	} );
 
-	// 지원 : IE <9
-	support.getElementsByClassName = rnative.test (document.getElementsByClassName);
+	// Support: IE<9
+	support.getElementsByClassName = rnative.test( document.getElementsByClassName );
 
-	// 지원 : IE <10
-	// getElementById가 이름으로 요소를 반환하는지 확인
-	// 깨진 getElementById 메서드는 프로그래밍 방식으로 설정된 이름을 선택하지 않습니다.
-	// 원형 교차로 getElementsByName 테스트를 사용합니다.
-	support.getById = assert (function (el) {
-		docElem.appendChild (el) .id = expando;
-		return! document.getElementsByName || ! document.getElementsByName (expando) .length;
-	});
+	// Support: IE<10
+	// Check if getElementById returns elements by name
+	// The broken getElementById methods don't pick up programmatically-set names,
+	// so use a roundabout getElementsByName test
+	support.getById = assert( function( el ) {
+		docElem.appendChild( el ).id = expando;
+		return !document.getElementsByName || !document.getElementsByName( expando ).length;
+	} );
 
-	// ID 필터 및 찾기
-	if (support.getById) {
-		Expr.filter [ "ID"] = function (id) {
-			var attrId = id.replace (runescape, funescape);
-			return function (elem) {
-				return elem.getAttribute ( "id") === attrId;
+	// ID filter and find
+	if ( support.getById ) {
+		Expr.filter[ "ID" ] = function( id ) {
+			var attrId = id.replace( runescape, funescape );
+			return function( elem ) {
+				return elem.getAttribute( "id" ) === attrId;
 			};
 		};
-		Expr.find [ "ID"] = function (id, context) {
-			if (typeof context.getElementById! == "정의되지 않음"&& documentIsHTML) {
-				var elem = context.getElementById (id);
-				elem을 반환 하시겠습니까? [elem] : [];
+		Expr.find[ "ID" ] = function( id, context ) {
+			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
+				var elem = context.getElementById( id );
+				return elem ? [ elem ] : [];
 			}
 		};
 	} else {
-		Expr.filter [ "ID"] = function (id) {
-			var attrId = id.replace (runescape, funescape);
-			return function (elem) {
-				var node = typeof elem.getAttributeNode! == "정의되지 않음"&&
-					elem.getAttributeNode ( "id");
-				리턴 노드 && node.value === attrId;
+		Expr.filter[ "ID" ] =  function( id ) {
+			var attrId = id.replace( runescape, funescape );
+			return function( elem ) {
+				var node = typeof elem.getAttributeNode !== "undefined" &&
+					elem.getAttributeNode( "id" );
+				return node && node.value === attrId;
 			};
 		};
 
-		// 지원 : IE 6-7 만
-		// getElementById는 찾기 바로 가기로 신뢰할 수 없습니다.
-		Expr.find [ "ID"] = function (id, context) {
-			if (typeof context.getElementById! == "정의되지 않음"&& documentIsHTML) {
-				var 노드, i, elems,
-					elem = context.getElementById (id);
+		// Support: IE 6 - 7 only
+		// getElementById is not reliable as a find shortcut
+		Expr.find[ "ID" ] = function( id, context ) {
+			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
+				var node, i, elems,
+					elem = context.getElementById( id );
 
-				if (elem) {
+				if ( elem ) {
 
-					// id 속성 확인
-					node = elem.getAttributeNode ( "id");
-					if (node ​​&& node.value === id) {
-						return [elem];
+					// Verify the id attribute
+					node = elem.getAttributeNode( "id" );
+					if ( node && node.value === id ) {
+						return [ elem ];
 					}
 
-					// getElementsByName에서 폴백
-					elems = context.getElementsByName (id);
-					나는 = 0;
-					while ((elem = elems [i ++])) {
-						node = elem.getAttributeNode ( "id");
-						if (node ​​&& node.value === id) {
-							return [elem];
+					// Fall back on getElementsByName
+					elems = context.getElementsByName( id );
+					i = 0;
+					while ( ( elem = elems[ i++ ] ) ) {
+						node = elem.getAttributeNode( "id" );
+						if ( node && node.value === id ) {
+							return [ elem ];
 						}
 					}
 				}
@@ -1261,65 +1261,65 @@ setDocument = Sizzle.setDocument = function (node) {
 		};
 	}
 
-	// 태그
-	Expr.find [ "TAG"] = support.getElementsByTagName?
-		function (태그, 컨텍스트) {
-			if (typeof context.getElementsByTagName! == "정의되지 않음") {
-				return context.getElementsByTagName (tag);
+	// Tag
+	Expr.find[ "TAG" ] = support.getElementsByTagName ?
+		function( tag, context ) {
+			if ( typeof context.getElementsByTagName !== "undefined" ) {
+				return context.getElementsByTagName( tag );
 
-			// DocumentFragment 노드에는 gEBTN이 없습니다.
-			} else if (support.qsa) {
-				return context.querySelectorAll (tag);
+			// DocumentFragment nodes don't have gEBTN
+			} else if ( support.qsa ) {
+				return context.querySelectorAll( tag );
 			}
 		} :
 
-		function (태그, 컨텍스트) {
+		function( tag, context ) {
 			var elem,
 				tmp = [],
-				나는 = 0,
+				i = 0,
 
-				// 우연의 일치로 DocumentFragment 노드에도 (깨진) gEBTN이 나타납니다.
-				결과 = context.getElementsByTagName (tag);
+				// By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
+				results = context.getElementsByTagName( tag );
 
-			// 가능한 댓글 필터링
-			if (tag === "*") {
-				while ((elem = results [i ++])) {
-					if (elem.nodeType === 1) {
-						tmp.push (elem);
+			// Filter out possible comments
+			if ( tag === "*" ) {
+				while ( ( elem = results[ i++ ] ) ) {
+					if ( elem.nodeType === 1 ) {
+						tmp.push( elem );
 					}
 				}
 
-				반환 tmp;
+				return tmp;
 			}
-			반환 결과;
+			return results;
 		};
 
-	// 수업
-	Expr.find [ "CLASS"] = support.getElementsByClassName && function (className, context) {
-		if (typeof context.getElementsByClassName! == "정의되지 않음"&& documentIsHTML) {
-			return context.getElementsByClassName (className);
+	// Class
+	Expr.find[ "CLASS" ] = support.getElementsByClassName && function( className, context ) {
+		if ( typeof context.getElementsByClassName !== "undefined" && documentIsHTML ) {
+			return context.getElementsByClassName( className );
 		}
 	};
 
-	/ * QSA / matchesSelector
-	-------------------------------------------------- -------------------- * /
+	/* QSA/matchesSelector
+	---------------------------------------------------------------------- */
 
-	// QSA 및 matchesSelector 지원
+	// QSA and matchesSelector support
 
-	// matchesSelector (: active) true 일 때 false보고 (IE9 / Opera 11.5)
+	// matchesSelector(:active) reports false when true (IE9/Opera 11.5)
 	rbuggyMatches = [];
 
-	// qSa (: focus)가 true 일 때 false를보고합니다 (Chrome 21).
-	// 오류를 발생시키는 IE8 / 9의 버그 때문에 허용됩니다.
-	// iframe에서`document.activeElement`에 액세스 할 때마다
-	// 따라서 IE 오류를 방지하기 위해 항상 : focus가 QSA를 통과하도록 허용합니다.
-	// https://bugs.jquery.com/ticket/13378 참조
+	// qSa(:focus) reports false when true (Chrome 21)
+	// We allow this because of a bug in IE8/9 that throws an error
+	// whenever `document.activeElement` is accessed on an iframe
+	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// See https://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
-	if ((support.qsa = rnative.test (document.querySelectorAll))) {
+	if ( ( support.qsa = rnative.test( document.querySelectorAll ) ) ) {
 
-		// QSA 정규식 빌드
-		// Diego Perini에서 채택한 정규식 전략
+		// Build QSA regex
+		// Regex strategy adopted from Diego Perini
 		assert( function( el ) {
 
 			var input;
@@ -1408,30 +1408,30 @@ setDocument = Sizzle.setDocument = function (node) {
 			}
 
 			// Support: IE9-11+
-			// IE의 : disabled 선택기는 비활성화 된 필드 셋의 자식을 선택하지 않습니다.
-			docElem.appendChild (el) .disabled = true;
-			if (el.querySelectorAll ( ": disabled") .length! == 2) {
-				rbuggyQSA.push ( ": 활성화 됨", ": 비활성화 됨");
+			// IE's :disabled selector does not pick up the children of disabled fieldsets
+			docElem.appendChild( el ).disabled = true;
+			if ( el.querySelectorAll( ":disabled" ).length !== 2 ) {
+				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
 
-			// 지원 : Opera 10-11 전용
-			// Opera 10-11은 쉼표 후 유효하지 않은 의사를 던지지 않습니다.
-			el.querySelectorAll ( "* ,: x");
-			rbuggyQSA.push ( ",. * :");
-		});
+			// Support: Opera 10 - 11 only
+			// Opera 10-11 does not throw on post-comma invalid pseudos
+			el.querySelectorAll( "*,:x" );
+			rbuggyQSA.push( ",.*:" );
+		} );
 	}
 
-	if ((support.matchesSelector = rnative.test ((match = docElem.matches ||
+	if ( ( support.matchesSelector = rnative.test( ( matches = docElem.matches ||
 		docElem.webkitMatchesSelector ||
 		docElem.mozMatchesSelector ||
 		docElem.oMatchesSelector ||
-		docElem.msMatchesSelector)))) {
+		docElem.msMatchesSelector ) ) ) ) {
 
-		assert (function (el) {
+		assert( function( el ) {
 
-			// matchSelector를 수행 할 수 있는지 확인
-			// 연결이 끊긴 노드 (IE 9)
-			support.disconnectedMatch = matches.call (el, "*");
+			// Check to see if it's possible to do matchesSelector
+			// on a disconnected node (IE 9)
+			support.disconnectedMatch = matches.call( el, "*" );
 
 			// This should fail with an exception
 			// Gecko does not error, returns false instead
